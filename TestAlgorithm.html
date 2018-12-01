@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <script src='../AK/AK.js'></script>
+  <script src='AKTest.js'></script>
+ </head>
+ <body>
+  <script>
+  (function() {
+   try {
+    ak.path(['.', '../AK']);
+    ak.using('TestAlgorithm.js', function(){akTest.run();});
+   }
+   catch(e) {
+    var div = document.createElement('div');
+    div.innerHTML = 'Error: ' + e.message;
+    document.body.appendChild(div);
+   }
+  })();
+  </script>
+ </body>
+</html>
+  

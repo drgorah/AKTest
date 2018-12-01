@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <script src='../AK/AK.js'></script>
+  <script src='AKTest.js'></script>
+ </head>
+ <body>
+  <script>
+  (function() {
+   function runTests() {
+    try {
+     var div = document.createElement('div');
+     div.innerHTML = '<br>'
+     document.body.appendChild(div);
+     window.scrollTo(0, document.documentElement.offsetHeight - window.innerHeight);
+
+     ak.path(['.', '../AK']);
+     ak.using('TestImage.js', function(){akTest.run();});
+    }
+    catch(e) {
+     var div = document.createElement('div');
+     div.innerHTML = 'Error: ' + e.message;
+     document.body.appendChild(div);
+     window.scrollTo(0, document.documentElement.offsetHeight - window.innerHeight);
+    }
+   }
+
+   function cacheImgAndRunTests(i) {
+    var img = document.createElement('img');
+    var div = document.createElement('div');
+    var src;
+
+    if(i>28) {
+     img.onerror = img.onload = runTests;
+     src = 'TestImage/test.png';
+    }
+    else if(i>9) {
+     img.onerror = img.onload = function(){cacheImgAndRunTests(i+1);};
+     src = 'TestImage/face' + i + '.png';
+    }
+    else {
+     img.onerror = img.onload = function(){cacheImgAndRunTests(i+1);};
+     src = 'TestImage/face0' + i + '.png';
+    }
+    div.innerHTML = 'loading ' + src;
+    document.body.appendChild(div);
+    window.scrollTo(0, document.documentElement.offsetHeight - window.innerHeight);
+    img.src = src;
+   }
+
+   cacheImgAndRunTests(1);
+  })();
+  </script>
+ </body>
+</html>
+  

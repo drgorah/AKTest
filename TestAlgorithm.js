@@ -1,0 +1,34 @@
+"use strict";
+
+(function() {
+ var all = [];
+ all.push('TestAlgorithm/TestArrayIndex.js');
+ all.push('TestAlgorithm/TestBinarySearch.js');
+ all.push('TestAlgorithm/TestCompare.js');
+ all.push('TestAlgorithm/TestEqual.js');
+ all.push('TestAlgorithm/TestEqualRange.js');
+ all.push('TestAlgorithm/TestIncludes.js');
+ all.push('TestAlgorithm/TestIsPartitioned.js');
+ all.push('TestAlgorithm/TestIsSorted.js');
+ all.push('TestAlgorithm/TestIsSortedUntil.js');
+ all.push('TestAlgorithm/TestLexicographicalCompare.js');
+ all.push('TestAlgorithm/TestLowerBound.js');
+ all.push('TestAlgorithm/TestMaxElement.js');
+ all.push('TestAlgorithm/TestMerge.js');
+ all.push('TestAlgorithm/TestMinElement.js');
+ all.push('TestAlgorithm/TestNextState.js');
+ all.push('TestAlgorithm/TestNthElement.js');
+ all.push('TestAlgorithm/TestPartialSort.js');
+ all.push('TestAlgorithm/TestPartition.js');
+ all.push('TestAlgorithm/TestPartitionPoint.js');
+ all.push('TestAlgorithm/TestPrevState.js');
+ all.push('TestAlgorithm/TestSetDifference.js');
+ all.push('TestAlgorithm/TestSetIntersection.js');
+ all.push('TestAlgorithm/TestSetSymmetricDifference.js');
+ all.push('TestAlgorithm/TestSetUnion.js');
+ all.push('TestAlgorithm/TestShuffle.js');
+ all.push('TestAlgorithm/TestSort.js');
+ all.push('TestAlgorithm/TestUnique.js');
+ all.push('TestAlgorithm/TestUpperBound.js');
+ ak.using(all);
+})();
