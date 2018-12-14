@@ -15,6 +15,7 @@
  all.push('TestCluster/TestNearestNeighbours.js');
  all.push('TestCluster/TestRawClustering.js');
  all.push('TestCluster/TestRawClusterings.js');
+ all.push('TestCluster/TestSharedNeighboursClustering.js');
  all.push('TestCluster/TestSlinkClustering.js');
  ak.using(all);
 })();
