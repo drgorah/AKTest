@@ -19,6 +19,12 @@
    var m15 = [0, 1, 1, 2, 2];
    var m16 = [0, 1, 1, 2, 2, 3];
 
+   var o05 = {memberships: m05};
+   var o06 = {memberships: m06, data: d6};
+
+   var o15 = {memberships: m15, data: 'a'};
+   var o16 = {memberships: m16, data: D6};
+
    var c05 = ak.clustering(m05);
    var c06 = ak.clustering(m06);
 
@@ -51,6 +57,7 @@
     try {ak.clusterings('a'); return false;} catch(e) {}
     try {ak.clusterings(m05); return false;} catch(e) {}
     try {ak.clusterings([m05, m15], 'a'); return false;} catch(e) {}
+    try {ak.clusterings([o05, o15]); return false;} catch(e) {}
     try {ak.clusterings(cs015, 'a'); return false;} catch(e) {}
     try {ak.clusterings(cds015, 'a'); return false;} catch(e) {}
     return true;
@@ -65,6 +72,7 @@
     try {ak.clusterings([c06, c16], d5); return false;} catch(e) {}
     try {ak.clusterings([cd06, cd16], d5); return false;} catch(e) {}
     try {ak.clusterings([cd06, cd16], D6); return false;} catch(e) {}
+    try {ak.clusterings([o06, o16]); return false;} catch(e) {}
     try {ak.clusterings(cds015, D6); return false;} catch(e) {}
     return true;
    }
