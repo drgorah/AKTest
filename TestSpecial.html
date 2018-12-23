@@ -7,13 +7,17 @@
  <body>
   <script>
   (function() {
+   var div = document.createElement('div');
+   div.innerHTML = 'loading TestSpecial.js<br><br>';
+   document.body.appendChild(div);
+
    try {
     ak.path(['.', '../AK']);
     ak.using('TestSpecial.js', function(){akTest.run();});
    }
    catch(e) {
     var div = document.createElement('div');
-    div.innerHTML = 'Error: ' + e.message;
+    div.innerHTML = 'error: ' + e.message;
     document.body.appendChild(div);
     window.scrollTo(0, document.documentElement.offsetHeight - window.innerHeight);
    }

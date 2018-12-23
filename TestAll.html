@@ -8,6 +8,10 @@
   <script>
   (function() {
    function runTests() {
+    var div = document.createElement('div');
+    div.innerHTML = '<br>loading TestAll.js<br>';
+    document.body.appendChild(div);
+
     try {
      var tests = [];
      var div = document.createElement('div');
@@ -41,7 +45,7 @@
     }
     catch(e) {
      var div = document.createElement('div');
-     div.innerHTML = 'Error: ' + e.message;
+     div.innerHTML = 'error: ' + e.message;
      document.body.appendChild(div);
      window.scrollTo(0, document.documentElement.offsetHeight - window.innerHeight);
     }
