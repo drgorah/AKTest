@@ -3,7 +3,6 @@
 (function() {
  var all = [];
  all.push('TestCluster/TestClade.js');
- all.push('TestCluster/TestClinkClustering.js');
  all.push('TestCluster/TestClusterDistortion.js');
  all.push('TestCluster/TestClustering.js');
  all.push('TestCluster/TestClusterings.js');
