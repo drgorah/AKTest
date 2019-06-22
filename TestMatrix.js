@@ -9,5 +9,6 @@
  all.push('TestMatrix/TestComplexMatrix.js');
  all.push('TestMatrix/TestCholeskyDecomposition.js');
  all.push('TestMatrix/TestComplexCholeskyDecomposition.js');
+ all.push('TestMatrix/TestSpectralDecomposition.js');
  ak.using(all);
 })();
