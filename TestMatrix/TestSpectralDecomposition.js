@@ -37,22 +37,28 @@
    var s8 = ak.spectralDecomposition(m8);
    var j8 = ak.jacobiDecomposition(m8);
 
-   function versusJacobi() {
-    var n = m8.cols();
-    var sa = ak.transpose(s8.v()).toArray();
-    var ja = ak.transpose(j8.v()).toArray();
+   var i;
+   var a9 = m8.toArray(); for(i=0;i<5;++i) a9[5][i] = a9[i][5] = 0;
+   var m9 = ak.matrix(a9);
+   var s9 = ak.spectralDecomposition(m9);
+   var j9 = ak.jacobiDecomposition(m9);
+
+   function versusJacobi(m, sm, jm) {
+    var n = m.cols();
+    var sa = ak.transpose(sm.v()).toArray();
+    var ja = ak.transpose(jm.v()).toArray();
     var sp = new Array(n);
     var jp = new Array(n);
     var i, j, dl, dv, ss, js, sv, jv;
 
     for(i=0;i<n;++i) sp[i] = jp[i] = i;
-    sp.sort(function(i0,i1){return Math.abs(s8.lambda().at(i0))-Math.abs(s8.lambda().at(i1));});
-    jp.sort(function(i0,i1){return Math.abs(j8.lambda().at(i0))-Math.abs(j8.lambda().at(i1));});
+    sp.sort(function(i0,i1){return Math.abs(sm.lambda().at(i0))-Math.abs(sm.lambda().at(i1));});
+    jp.sort(function(i0,i1){return Math.abs(jm.lambda().at(i0))-Math.abs(jm.lambda().at(i1));});
 
     for(i=0;i<n;++i) {
-     dl = ak.diff(s8.lambda().at(sp[i]), j8.lambda().at(jp[i]));
+     dl = ak.diff(sm.lambda().at(sp[i]), jm.lambda().at(jp[i]));
 
-     if(s8.lambda().at(sp[i])===0) {
+     if(sm.lambda().at(sp[i])===0) {
       dv = 0.0;
      }
      else {
@@ -67,7 +73,6 @@
 
       dv = ak.diff(sv, jv);
      }
-
      if(dl>100*eps || dv>100*eps) return false;
     }
     return true;
@@ -95,7 +100,7 @@
    init.add('correct', function(){return m4.at(0,0)/s1.v().at(0,0)-m4.at(1,0)/s1.v().at(1,0)<100*eps && m4.at(0,0)/s1.v().at(0,0)-m4.at(2,0)/s1.v().at(2,0)<100*eps
                                       && m4.at(0,1)/s1.v().at(0,1)-m4.at(1,1)/s1.v().at(1,1)<100*eps && m4.at(0,1)/s1.v().at(0,1)-m4.at(2,1)/s1.v().at(2,1)<100*eps
                                       && m4.at(0,2)/s1.v().at(0,2)-m4.at(1,2)/s1.v().at(1,2)<100*eps && m4.at(0,2)/s1.v().at(0,2)-m4.at(2,2)/s1.v().at(2,2)<100*eps;});
-   init.add('versus jacobi', versusJacobi);
+   init.add('versus jacobi', function(){return versusJacobi(m8, s8, j8) && versusJacobi(m9, s9, j9);});
   
    var members = {
     name: 'members',
@@ -105,7 +110,7 @@
   
    members.add('v',             function(){return ak.eq(s3.v(), m2);});
    members.add('lambda',        function(){return ak.eq(s3.lambda(), v0);});
-   members.add('toMatrix',      function(){return ak.dist(m3, s3.toMatrix())<=eps;});
+   members.add('toMatrix',      function(){return ak.dist(m3, s3.toMatrix())<=eps && ak.dist(m8, s8.toMatrix())<=eps && ak.dist(m9, s9.toMatrix())<=eps;});
    members.add('toString',      function(){return s3.toString()==='{v:'+m2.toString()+',lambda:'+v0.toString()+'}';});
    members.add('toExponential', function(){return s3.toExponential(2)==='{v:'+m2.toExponential(2)+',lambda:'+v0.toExponential(2)+'}';});
    members.add('toFixed',       function(){return s3.toFixed(2)==='{v:'+m2.toFixed(2)+',lambda:'+v0.toFixed(2)+'}';});
@@ -136,7 +141,7 @@
    operators.add('atan', function(){return testFun(ak.atan, s7);});
    operators.add('cos',  function(){return testFun(ak.cos, s7);});
    operators.add('cosh', function(){return testFun(ak.cosh, s7);});
-   operators.add('det',  function(){return ak.dist(ak.det(s1), ak.det(m1)) <= 100*eps;});
+   operators.add('det',  function(){return ak.dist(ak.det(s1), ak.det(m1)) <= 200*eps;});
    operators.add('exp',  function(){return ak.dist(ak.exp(s7), ak.exp(s7.toMatrix())) <= 100*eps;});
    operators.add('inv',  function(){return ak.dist(ak.inv(s1), ak.inv(m1)) <= 100*eps;});
    operators.add('log',  function(){return testFun(ak.log, s7);});
