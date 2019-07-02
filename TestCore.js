@@ -66,6 +66,7 @@
   
    operators.add('trunc', function(){return ak.trunc(2.1)===2 && ak.trunc(2.9)===2 && ak.trunc(ak.INT_MAX)===ak.INT_MAX && ak.trunc(-2.1)===-2 && ak.trunc(-2.9)===-2 && ak.trunc(-ak.INT_MAX)===-ak.INT_MAX;});
    operators.add('round', function(){return ak.round(2.1)===2 && ak.round(2.9)===3 && ak.round(ak.INT_MAX)===ak.INT_MAX && ak.round(-2.1)===-2 && ak.round(-2.9)===-3 && ak.round(-ak.INT_MAX)===-ak.INT_MAX && ak.round(Math.pow(2, ak.INT_DIG-1)+1)===Math.pow(2, ak.INT_DIG-1)+1 && ak.round(-Math.pow(2, ak.INT_DIG-1)-1)===-Math.pow(2, ak.INT_DIG-1)-1;});
+   operators.add('hypot', function() {return ak.hypot(0, 0)===0 && ak.hypot(1, 0)===1 && ak.hypot(0, 1)===1 && ak.diff(ak.hypot(16, 15), Math.sqrt(16*16+15*15))<eps && ak.diff(ak.hypot(15, 16), Math.sqrt(16*16+15*15))<eps && ak.diff(ak.hypot(ak.DEC_MAX, 1), ak.DEC_MAX)<eps && ak.diff(ak.hypot(1, ak.DEC_MAX), ak.DEC_MAX)<eps && isNaN(ak.hypot(ak.NaN, 1)) && isNaN(ak.hypot(1, ak.NaN)) && isNaN(ak.hypot(ak.NaN, ak.NaN)) && ak.hypot(ak.INFINITY, ak.INFINITY)===ak.INFINITY;});
    operators.add('diff',  function(){return ak.diff(1, 2)>eps && ak.diff(1, 1+ak.EPSILON)<eps && ak.calc(1, 2, 'diff')>eps && ak.calc(1, 1+ak.EPSILON, 'diff')<eps;});
   
    operators.add('not',  function(){return ak.not(true)===false && ak.not(false)===true && ak.calc(true, '!')===false && ak.calc(false, '!')===true;});
