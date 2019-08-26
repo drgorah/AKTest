@@ -81,6 +81,12 @@
     }
     return true;
    }
+
+   function identity(n) {
+    var i = ak.matrix('identity', n);
+    var s = ak.spectralDecomposition(i);
+    return ak.diff(i, s.toMatrix())<eps;
+   }
   
    function apply(f, v, l) {
     var i;
@@ -104,6 +110,7 @@
    init.add('correct', function(){return m4.at(0,0)/s1.v().at(0,0)-m4.at(1,0)/s1.v().at(1,0)<100*eps && m4.at(0,0)/s1.v().at(0,0)-m4.at(2,0)/s1.v().at(2,0)<100*eps
                                       && m4.at(0,1)/s1.v().at(0,1)-m4.at(1,1)/s1.v().at(1,1)<100*eps && m4.at(0,1)/s1.v().at(0,1)-m4.at(2,1)/s1.v().at(2,1)<100*eps
                                       && m4.at(0,2)/s1.v().at(0,2)-m4.at(1,2)/s1.v().at(1,2)<100*eps && m4.at(0,2)/s1.v().at(0,2)-m4.at(2,2)/s1.v().at(2,2)<100*eps;});
+   init.add('identity', function(){return identity(1) && identity(2) && identity(4) && identity(8);});
    init.add('versus jacobi', function(){return versusJacobi(m8, s8, j8) && versusJacobi(m9, s9, j9) && versusJacobi(m10, s10, j10);});
   
    var members = {
