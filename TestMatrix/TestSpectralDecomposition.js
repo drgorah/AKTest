@@ -9,7 +9,7 @@
   };
 
   try {
-   var eps = 100*ak.EPSILON;
+   var eps = 10*Math.pow(ak.EPSILON, 0.75);
   
    var v0 = ak.vector([1, 2]);
    var v1 = ak.vector([2, 1, 3]);
@@ -42,6 +42,10 @@
    var m9 = ak.matrix(a9);
    var s9 = ak.spectralDecomposition(m9);
    var j9 = ak.jacobiDecomposition(m9);
+
+   var m10 = ak.matrix(2, 2, Math.random); m10 = ak.add(m10, ak.transpose(m10));
+   var s10 = ak.spectralDecomposition(m10);
+   var j10 = ak.jacobiDecomposition(m10);
 
    function versusJacobi(m, sm, jm) {
     var n = m.cols();
@@ -100,14 +104,14 @@
    init.add('correct', function(){return m4.at(0,0)/s1.v().at(0,0)-m4.at(1,0)/s1.v().at(1,0)<100*eps && m4.at(0,0)/s1.v().at(0,0)-m4.at(2,0)/s1.v().at(2,0)<100*eps
                                       && m4.at(0,1)/s1.v().at(0,1)-m4.at(1,1)/s1.v().at(1,1)<100*eps && m4.at(0,1)/s1.v().at(0,1)-m4.at(2,1)/s1.v().at(2,1)<100*eps
                                       && m4.at(0,2)/s1.v().at(0,2)-m4.at(1,2)/s1.v().at(1,2)<100*eps && m4.at(0,2)/s1.v().at(0,2)-m4.at(2,2)/s1.v().at(2,2)<100*eps;});
-   init.add('versus jacobi', function(){return versusJacobi(m8, s8, j8) && versusJacobi(m9, s9, j9);});
+   init.add('versus jacobi', function(){return versusJacobi(m8, s8, j8) && versusJacobi(m9, s9, j9) && versusJacobi(m10, s10, j10);});
   
    var members = {
     name: 'members',
     body: [],
     add: function(n, b) {this.body.push({name: n, body: b});}
    };
-  
+
    members.add('v',             function(){return ak.eq(s3.v(), m2);});
    members.add('lambda',        function(){return ak.eq(s3.lambda(), v0);});
    members.add('toMatrix',      function(){return ak.dist(m3, s3.toMatrix())<=eps && ak.dist(m8, s8.toMatrix())<=eps && ak.dist(m9, s9.toMatrix())<=eps;});
