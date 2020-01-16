@@ -13,6 +13,7 @@
  all.push('TestDistribution/TestMultiUniformDistribution.js');
  all.push('TestDistribution/TestNormalDistribution.js');
  all.push('TestDistribution/TestPoissonDistribution.js');
+ all.push('TestDistribution/TestSlashDistribution.js');
  all.push('TestDistribution/TestUniformDistribution.js');
  ak.using(all);
 })();
