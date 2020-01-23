@@ -7,6 +7,7 @@
  all.push('TestDistribution/TestExponentialDistribution.js');
  all.push('TestDistribution/TestFourierDistribution.js');
  all.push('TestDistribution/TestGammaDistribution.js');
+ all.push('TestDistribution/TestGeometricDistribution.js');
  all.push('TestDistribution/TestGumbelDistribution.js');
  all.push('TestDistribution/TestLogNormalDistribution.js');
  all.push('TestDistribution/TestMultiNormalDistribution.js');
