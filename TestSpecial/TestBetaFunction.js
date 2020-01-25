@@ -64,45 +64,81 @@
    log.add('1.5, 0.5', function(){return ak.diff(ak.logBeta(1.5, 0.5), Math.log(ak.beta(1.5, 0.5)))<1.0e-10;});
    log.add('1.5, 1.5', function(){return ak.diff(ak.logBeta(1.5, 1.5), Math.log(ak.beta(1.5, 1.5)))<1.0e-10;});
   
-   var betaI = {
-    name: 'betaI',
+   var betaP = {
+    name: 'betaP',
     body: [],
     add: function(n, b) {this.body.push({name: n, body: b});}
    };
 
-   betaI.add('-0.5, -0.5, -0.25', function(){return isNaN(ak.betaI(-0.5, -0.5, -0.25));});
-   betaI.add('-0.5, -0.5,  0.25', function(){return isNaN(ak.betaI(-0.5, -0.5,  0.25));});
-   betaI.add('-0.5,  0.5, -0.25', function(){return isNaN(ak.betaI(-0.5,  0.5, -0.25));});
-   betaI.add('-0.5,  0.5,  0.25', function(){return isNaN(ak.betaI(-0.5,  0.5,  0.25));});
-   betaI.add('0.5, -0.5, -0.25', function(){return isNaN(ak.betaI(0.5, -0.5, -0.25));});
-   betaI.add('0.5, -0.5,  0.25', function(){return isNaN(ak.betaI(0.5, -0.5,  0.25));});
-   betaI.add('0.5,  0.5, -0.25', function(){return isNaN(ak.betaI(0.5,  0.5, -0.25));});
+   betaP.add('-0.5, -0.5, -0.25', function(){return isNaN(ak.betaP(-0.5, -0.5, -0.25));});
+   betaP.add('-0.5, -0.5,  0.25', function(){return isNaN(ak.betaP(-0.5, -0.5,  0.25));});
+   betaP.add('-0.5,  0.5, -0.25', function(){return isNaN(ak.betaP(-0.5,  0.5, -0.25));});
+   betaP.add('-0.5,  0.5,  0.25', function(){return isNaN(ak.betaP(-0.5,  0.5,  0.25));});
+   betaP.add('0.5, -0.5, -0.25', function(){return isNaN(ak.betaP(0.5, -0.5, -0.25));});
+   betaP.add('0.5, -0.5,  0.25', function(){return isNaN(ak.betaP(0.5, -0.5,  0.25));});
+   betaP.add('0.5,  0.5, -0.25', function(){return isNaN(ak.betaP(0.5,  0.5, -0.25));});
 
-   betaI.add('0.5, 0.5, 0', function(){return ak.betaI(0.5, 0.5, 0)===0;});
-   betaI.add('0.5, 0.5, 0.25', function(){return ak.diff(ak.betaI(0.5, 0.5, 0.25)*ak.beta(0.5, 0.5), betaIntegral(0.5, 0.5)(1e-10, 0.25))<1.0e-5;});
-   betaI.add('0.5, 0.5, 0.5',  function(){return ak.diff(ak.betaI(0.5, 0.5, 0.5)*ak.beta(0.5, 0.5),  betaIntegral(0.5, 0.5)(1e-10, 0.5)) <1.0e-5;});
-   betaI.add('0.5, 0.5, 0.75', function(){return ak.diff(ak.betaI(0.5, 0.5, 0.75)*ak.beta(0.5, 0.5), betaIntegral(0.5, 0.5)(1e-10, 0.75))<1.0e-5;});
-   betaI.add('0.5, 0.5, 1', function(){return ak.betaI(0.5, 0.5, 1)===1;});
-   betaI.add('0.5, 1.5, 0', function(){return ak.betaI(0.5, 1.5, 0)===0;});
-   betaI.add('0.5, 1.5, 0.25', function(){return ak.diff(ak.betaI(0.5, 1.5, 0.25)*ak.beta(0.5, 1.5), betaIntegral(0.5, 1.5)(1e-10, 0.25))<1.0e-5;});
-   betaI.add('0.5, 1.5, 0.5',  function(){return ak.diff(ak.betaI(0.5, 1.5, 0.5)*ak.beta(0.5, 1.5),  betaIntegral(0.5, 1.5)(1e-10, 0.5)) <1.0e-5;});
-   betaI.add('0.5, 1.5, 0.75', function(){return ak.diff(ak.betaI(0.5, 1.5, 0.75)*ak.beta(0.5, 1.5), betaIntegral(0.5, 1.5)(1e-10, 0.75))<1.0e-5;});
-   betaI.add('0.5, 1.5, 1', function(){return ak.betaI(0.5, 1.5, 1)===1;});
-   betaI.add('1.5, 0.5, 0', function(){return ak.betaI(1.5, 0.5, 0)===0;});
-   betaI.add('1.5, 0.5, 0.25', function(){return ak.diff(ak.betaI(1.5, 0.5, 0.25)*ak.beta(1.5, 0.5), betaIntegral(1.5, 0.5)(1e-10, 0.25))<1.0e-5;});
-   betaI.add('1.5, 0.5, 0.5',  function(){return ak.diff(ak.betaI(1.5, 0.5, 0.5)*ak.beta(1.5, 0.5),  betaIntegral(1.5, 0.5)(1e-10, 0.5)) <1.0e-5;});
-   betaI.add('1.5, 0.5, 0.75', function(){return ak.diff(ak.betaI(1.5, 0.5, 0.75)*ak.beta(1.5, 0.5), betaIntegral(1.5, 0.5)(1e-10, 0.75))<1.0e-5;});
-   betaI.add('1.5, 0.5, 1', function(){return ak.betaI(1.5, 0.5, 1)===1;});
-   betaI.add('1.5, 1.5, 0', function(){return ak.betaI(1.5, 1.5, 0)===0;});
-   betaI.add('1.5, 1.5, 0.25', function(){return ak.diff(ak.betaI(1.5, 1.5, 0.25)*ak.beta(1.5, 1.5), betaIntegral(1.5, 1.5)(1e-10, 0.25))<1.0e-5;});
-   betaI.add('1.5, 1.5, 0.5',  function(){return ak.diff(ak.betaI(1.5, 1.5, 0.5)*ak.beta(1.5, 1.5),  betaIntegral(1.5, 1.5)(1e-10, 0.5)) <1.0e-5;});
-   betaI.add('1.5, 1.5, 0.75', function(){return ak.diff(ak.betaI(1.5, 1.5, 0.75)*ak.beta(1.5, 1.5), betaIntegral(1.5, 1.5)(1e-10, 0.75))<1.0e-5;});
-   betaI.add('1.5, 1.5, 1', function(){return ak.betaI(1.5, 1.5, 1)===1;});
+   betaP.add('0.5, 0.5, 0', function(){return ak.betaP(0.5, 0.5, 0)===0;});
+   betaP.add('0.5, 0.5, 0.25', function(){return ak.diff(ak.betaP(0.5, 0.5, 0.25)*ak.beta(0.5, 0.5), betaIntegral(0.5, 0.5)(1e-10, 0.25))<1.0e-5;});
+   betaP.add('0.5, 0.5, 0.5',  function(){return ak.diff(ak.betaP(0.5, 0.5, 0.5)*ak.beta(0.5, 0.5),  betaIntegral(0.5, 0.5)(1e-10, 0.5)) <1.0e-5;});
+   betaP.add('0.5, 0.5, 0.75', function(){return ak.diff(ak.betaP(0.5, 0.5, 0.75)*ak.beta(0.5, 0.5), betaIntegral(0.5, 0.5)(1e-10, 0.75))<1.0e-5;});
+   betaP.add('0.5, 0.5, 1', function(){return ak.betaP(0.5, 0.5, 1)===1;});
+   betaP.add('0.5, 1.5, 0', function(){return ak.betaP(0.5, 1.5, 0)===0;});
+   betaP.add('0.5, 1.5, 0.25', function(){return ak.diff(ak.betaP(0.5, 1.5, 0.25)*ak.beta(0.5, 1.5), betaIntegral(0.5, 1.5)(1e-10, 0.25))<1.0e-5;});
+   betaP.add('0.5, 1.5, 0.5',  function(){return ak.diff(ak.betaP(0.5, 1.5, 0.5)*ak.beta(0.5, 1.5),  betaIntegral(0.5, 1.5)(1e-10, 0.5)) <1.0e-5;});
+   betaP.add('0.5, 1.5, 0.75', function(){return ak.diff(ak.betaP(0.5, 1.5, 0.75)*ak.beta(0.5, 1.5), betaIntegral(0.5, 1.5)(1e-10, 0.75))<1.0e-5;});
+   betaP.add('0.5, 1.5, 1', function(){return ak.betaP(0.5, 1.5, 1)===1;});
+   betaP.add('1.5, 0.5, 0', function(){return ak.betaP(1.5, 0.5, 0)===0;});
+   betaP.add('1.5, 0.5, 0.25', function(){return ak.diff(ak.betaP(1.5, 0.5, 0.25)*ak.beta(1.5, 0.5), betaIntegral(1.5, 0.5)(1e-10, 0.25))<1.0e-5;});
+   betaP.add('1.5, 0.5, 0.5',  function(){return ak.diff(ak.betaP(1.5, 0.5, 0.5)*ak.beta(1.5, 0.5),  betaIntegral(1.5, 0.5)(1e-10, 0.5)) <1.0e-5;});
+   betaP.add('1.5, 0.5, 0.75', function(){return ak.diff(ak.betaP(1.5, 0.5, 0.75)*ak.beta(1.5, 0.5), betaIntegral(1.5, 0.5)(1e-10, 0.75))<1.0e-5;});
+   betaP.add('1.5, 0.5, 1', function(){return ak.betaP(1.5, 0.5, 1)===1;});
+   betaP.add('1.5, 1.5, 0', function(){return ak.betaP(1.5, 1.5, 0)===0;});
+   betaP.add('1.5, 1.5, 0.25', function(){return ak.diff(ak.betaP(1.5, 1.5, 0.25)*ak.beta(1.5, 1.5), betaIntegral(1.5, 1.5)(1e-10, 0.25))<1.0e-5;});
+   betaP.add('1.5, 1.5, 0.5',  function(){return ak.diff(ak.betaP(1.5, 1.5, 0.5)*ak.beta(1.5, 1.5),  betaIntegral(1.5, 1.5)(1e-10, 0.5)) <1.0e-5;});
+   betaP.add('1.5, 1.5, 0.75', function(){return ak.diff(ak.betaP(1.5, 1.5, 0.75)*ak.beta(1.5, 1.5), betaIntegral(1.5, 1.5)(1e-10, 0.75))<1.0e-5;});
+   betaP.add('1.5, 1.5, 1', function(){return ak.betaP(1.5, 1.5, 1)===1;});
+
+   var betaQ = {
+    name: 'betaQ',
+    body: [],
+    add: function(n, b) {this.body.push({name: n, body: b});}
+   };
+
+   betaQ.add('-0.5, -0.5, -0.25', function(){return isNaN(ak.betaQ(-0.5, -0.5, -0.25));});
+   betaQ.add('-0.5, -0.5,  0.25', function(){return isNaN(ak.betaQ(-0.5, -0.5,  0.25));});
+   betaQ.add('-0.5,  0.5, -0.25', function(){return isNaN(ak.betaQ(-0.5,  0.5, -0.25));});
+   betaQ.add('-0.5,  0.5,  0.25', function(){return isNaN(ak.betaQ(-0.5,  0.5,  0.25));});
+   betaQ.add('0.5, -0.5, -0.25', function(){return isNaN(ak.betaQ(0.5, -0.5, -0.25));});
+   betaQ.add('0.5, -0.5,  0.25', function(){return isNaN(ak.betaQ(0.5, -0.5,  0.25));});
+   betaQ.add('0.5,  0.5, -0.25', function(){return isNaN(ak.betaQ(0.5,  0.5, -0.25));});
+
+   betaQ.add('0.5, 0.5, 0', function(){return ak.betaQ(0.5, 0.5, 0)===1;});
+   betaQ.add('0.5, 0.5, 0.25', function(){return ak.diff(ak.betaQ(0.5, 0.5, 0.25)*ak.beta(0.5, 0.5), betaIntegral(0.5, 0.5)(0.25, 1-1e-10))<1.0e-5;});
+   betaQ.add('0.5, 0.5, 0.5',  function(){return ak.diff(ak.betaQ(0.5, 0.5, 0.5)*ak.beta(0.5, 0.5),  betaIntegral(0.5, 0.5)(0.5, 1-1e-10)) <1.0e-5;});
+   betaQ.add('0.5, 0.5, 0.75', function(){return ak.diff(ak.betaQ(0.5, 0.5, 0.75)*ak.beta(0.5, 0.5), betaIntegral(0.5, 0.5)(0.75, 1-1e-10))<1.0e-5;});
+   betaQ.add('0.5, 0.5, 1', function(){return ak.betaQ(0.5, 0.5, 1)===0;});
+   betaQ.add('0.5, 1.5, 0', function(){return ak.betaQ(0.5, 1.5, 0)===1;});
+   betaQ.add('0.5, 1.5, 0.25', function(){return ak.diff(ak.betaQ(0.5, 1.5, 0.25)*ak.beta(0.5, 1.5), betaIntegral(0.5, 1.5)(0.25, 1-1e-10))<1.0e-5;});
+   betaQ.add('0.5, 1.5, 0.5',  function(){return ak.diff(ak.betaQ(0.5, 1.5, 0.5)*ak.beta(0.5, 1.5),  betaIntegral(0.5, 1.5)(0.5, 1-1e-10)) <1.0e-5;});
+   betaQ.add('0.5, 1.5, 0.75', function(){return ak.diff(ak.betaQ(0.5, 1.5, 0.75)*ak.beta(0.5, 1.5), betaIntegral(0.5, 1.5)(0.75, 1-1e-10))<1.0e-5;});
+   betaQ.add('0.5, 1.5, 1', function(){return ak.betaQ(0.5, 1.5, 1)===0;});
+   betaQ.add('1.5, 0.5, 0', function(){return ak.betaQ(1.5, 0.5, 0)===1;});
+   betaQ.add('1.5, 0.5, 0.25', function(){return ak.diff(ak.betaQ(1.5, 0.5, 0.25)*ak.beta(1.5, 0.5), betaIntegral(1.5, 0.5)(0.25, 1-1e-10))<1.0e-5;});
+   betaQ.add('1.5, 0.5, 0.5',  function(){return ak.diff(ak.betaQ(1.5, 0.5, 0.5)*ak.beta(1.5, 0.5),  betaIntegral(1.5, 0.5)(0.5, 1-1e-10)) <1.0e-5;});
+   betaQ.add('1.5, 0.5, 0.75', function(){return ak.diff(ak.betaQ(1.5, 0.5, 0.75)*ak.beta(1.5, 0.5), betaIntegral(1.5, 0.5)(0.75, 1-1e-10))<1.0e-5;});
+   betaQ.add('1.5, 0.5, 1', function(){return ak.betaQ(1.5, 0.5, 1)===0;});
+   betaQ.add('1.5, 1.5, 0', function(){return ak.betaQ(1.5, 1.5, 0)===1;});
+   betaQ.add('1.5, 1.5, 0.25', function(){return ak.diff(ak.betaQ(1.5, 1.5, 0.25)*ak.beta(1.5, 1.5), betaIntegral(1.5, 1.5)(0.25, 1-1e-10))<1.0e-5;});
+   betaQ.add('1.5, 1.5, 0.5',  function(){return ak.diff(ak.betaQ(1.5, 1.5, 0.5)*ak.beta(1.5, 1.5),  betaIntegral(1.5, 1.5)(0.5, 1-1e-10)) <1.0e-5;});
+   betaQ.add('1.5, 1.5, 0.75', function(){return ak.diff(ak.betaQ(1.5, 1.5, 0.75)*ak.beta(1.5, 1.5), betaIntegral(1.5, 1.5)(0.75, 1-1e-10))<1.0e-5;});
+   betaQ.add('1.5, 1.5, 1', function(){return ak.betaQ(1.5, 1.5, 1)===0;});
 
    beta.add(real);
    beta.add(complex);
    beta.add(log);
-   beta.add(betaI);
+   beta.add(betaP);
+   beta.add(betaQ);
   }
   catch(e) {
    var load = {
