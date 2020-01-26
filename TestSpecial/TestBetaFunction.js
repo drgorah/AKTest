@@ -56,9 +56,13 @@
     add: function(n, b) {this.body.push({name: n, body: b});}
    };  
 
+   log.add('strings', function(){return isNaN(ak.logBeta('0.5', '0.5'));});
    log.add('-0.5, -0.5', function(){return isNaN(ak.logBeta(-0.5, -0.5));});
    log.add('-0.5,  0.5', function(){return isNaN(ak.logBeta(-0.5,  0.5));});
    log.add(' 0.5, -0.5', function(){return isNaN(ak.logBeta( 0.5, -0.5));});
+   log.add(' 0.0,  0.0', function(){return isNaN(ak.logBeta(0, 0));});
+   log.add(' 0.0,  0.5', function(){return ak.logBeta(0, 0.5)===ak.INFINITY;});
+   log.add(' 0.5,  0.0', function(){return ak.logBeta(0.5, 0)===ak.INFINITY;});
    log.add('0.5, 0.5', function(){return ak.diff(ak.logBeta(0.5, 0.5), Math.log(ak.beta(0.5, 0.5)))<1.0e-10;});
    log.add('0.5, 1.5', function(){return ak.diff(ak.logBeta(0.5, 1.5), Math.log(ak.beta(0.5, 1.5)))<1.0e-10;});
    log.add('1.5, 0.5', function(){return ak.diff(ak.logBeta(1.5, 0.5), Math.log(ak.beta(1.5, 0.5)))<1.0e-10;});
