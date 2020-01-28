@@ -109,7 +109,7 @@
                                   && ak.eq(rnd3.a(), ak.vector([1,1,1])) && ak.eq(rnd3.b(), ak.vector([5,5,5]))
                                   && ak.eq(rnd4.a(), ak.vector([1,1,1])) && ak.eq(rnd4.b(), ak.vector([5,5,5]))
                                   && ak.eq(rnd5.a(), ak.vector([-1,0])) && ak.eq(rnd5.b(), ak.vector([0,2]))
-                                  && ak.eq(rnd6.a(), ak.vector([-1,-2])) && ak.eq(rnd6.b(), ak.vector([3,2]));});
+                                  && ak.eq(rnd6.a(), ak.vector([-1,-2])) && ak.eq(rnd6.b(), ak.vector([3,2])) && rnd6.rnd()!==Math.random;});
   
    function comparePDF(mpdf) {
     var d = mpdf.a().dims();

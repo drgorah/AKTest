@@ -291,7 +291,7 @@
                                   && ak.eq(rnd07.mu(), ak.vector([-1,2,-3])) && ak.diff(rnd07.sigma(), sigma)<1e-13
                                   && ak.eq(rnd08.mu(), ak.vector(3, 0)) && ak.eq(rnd08.sigma(), sigma)
                                   && ak.eq(rnd09.mu(), ak.vector(3, 0)) && ak.diff(rnd09.sigma(), sigma)<1e-13
-                                  && ak.eq(rnd10.mu(), ak.vector([-1,2,-3])) && ak.diff(rnd10.sigma(), sigma)<1e-13
+                                  && ak.eq(rnd10.mu(), ak.vector([-1,2,-3])) && ak.diff(rnd10.sigma(), sigma)<1e-13 && rnd10.rnd()!==Math.random
                                   && ak.eq(rnd11.mu(), ak.vector([])) && ak.eq(rnd11.sigma(), ak.matrix([]));
                              });
   

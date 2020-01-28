@@ -9,6 +9,8 @@
   };
 
   try {
+   function rnd() {return Math.random();}
+
    var pdf0 = ak.gumbelPDF();
    var pdf1 = ak.gumbelPDF(2);
    var pdf2 = ak.gumbelPDF(-1, 2);
@@ -28,6 +30,9 @@
    var rnd0 = ak.gumbelRnd();
    var rnd1 = ak.gumbelRnd(2);
    var rnd2 = ak.gumbelRnd(-1, 2);
+   var rnd3 = ak.gumbelRnd(rnd);
+   var rnd4 = ak.gumbelRnd(2, rnd);
+   var rnd5 = ak.gumbelRnd(-1, 2, rnd);
   
    var init = {
     name: 'init',
@@ -39,7 +44,12 @@
    init.add('cdf', function(){return cdf0.mu()===0 && cdf0.sigma()===1 && cdf1.mu()===0 && cdf1.sigma()===2 && cdf2.mu()===-1 && cdf2.sigma()===2;});
    init.add('inv_cdf', function(){return inv_cdf0.mu()===0 && inv_cdf0.sigma()===1 && inv_cdf1.mu()===0 && inv_cdf1.sigma()===2 && inv_cdf2.mu()===-1 && inv_cdf2.sigma()===2;});
    init.add('cf', function(){return cf0.mu()===0 && cf0.sigma()===1 && cf1.mu()===0 && cf1.sigma()===2 && cf2.mu()===-1 && cf2.sigma()===2;});
-   init.add('rnd', function(){return rnd0.mu()===0 && rnd0.sigma()===1 && rnd1.mu()===0 && rnd1.sigma()===2 && rnd2.mu()===-1 && rnd2.sigma()===2;});
+   init.add('rnd', function(){return rnd0.mu()===0  && rnd0.sigma()===1 && rnd0.rnd()===Math.random
+                                  && rnd1.mu()===0  && rnd1.sigma()===2 && rnd1.rnd()===Math.random
+                                  && rnd2.mu()===-1 && rnd2.sigma()===2 && rnd2.rnd()===Math.random
+                                  && rnd3.mu()===0  && rnd3.sigma()===1 && rnd3.rnd()===rnd
+                                  && rnd4.mu()===0  && rnd4.sigma()===2 && rnd4.rnd()===rnd
+                                  && rnd5.mu()===-1 && rnd5.sigma()===2 && rnd5.rnd()===rnd;});
   
    var val = {
     name: 'val',

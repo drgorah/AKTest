@@ -9,6 +9,8 @@
   };
 
   try {
+   function rnd() {return Math.random();}
+
    var pdf0 = ak.exponentialPDF();
    var pdf1 = ak.exponentialPDF(2);
    var pdf2 = ak.exponentialPDF(0.5);
@@ -28,8 +30,8 @@
    var rnd0 = ak.exponentialRnd();
    var rnd1 = ak.exponentialRnd(2);
    var rnd2 = ak.exponentialRnd(0.5);
-   var rnd3 = ak.exponentialRnd(Math.random);
-   var rnd4 = ak.exponentialRnd(0.5, Math.random);
+   var rnd3 = ak.exponentialRnd(rnd);
+   var rnd4 = ak.exponentialRnd(0.5, rnd);
   
    var init = {
     name: 'init',
@@ -41,7 +43,11 @@
    init.add('cdf', function(){return cdf0.lambda()===1 && cdf1.lambda()===2 && cdf2.lambda()===0.5;});
    init.add('inv_cdf', function(){return inv_cdf0.lambda()===1 && inv_cdf1.lambda()===2 && inv_cdf2.lambda()===0.5;});
    init.add('cf', function(){return cf0.lambda()===1 && cf1.lambda()===2 && cf2.lambda()===0.5;});
-   init.add('rnd', function(){return rnd0.lambda()===1 && rnd1.lambda()===2 && rnd2.lambda()===0.5 && rnd3.lambda()===1 && rnd4.lambda()===0.5;});
+   init.add('rnd', function(){return rnd0.lambda()===1   && rnd0.rnd()===Math.random
+                                  && rnd1.lambda()===2   && rnd1.rnd()===Math.random
+                                  && rnd2.lambda()===0.5 && rnd2.rnd()===Math.random
+                                  && rnd3.lambda()===1   && rnd3.rnd()===rnd
+                                  && rnd4.lambda()===0.5 && rnd4.rnd()===rnd;});
   
    var val = {
     name: 'val',

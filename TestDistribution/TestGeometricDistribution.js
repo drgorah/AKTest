@@ -9,6 +9,8 @@
   };
 
   try {
+   function rnd() {return Math.random();}
+
    var pmf0 = ak.geometricPMF();
    var pmf1 = ak.geometricPMF(0.25);
   
@@ -23,8 +25,8 @@
   
    var rnd0 = ak.geometricRnd();
    var rnd1 = ak.geometricRnd(0.25);
-   var rnd2 = ak.geometricRnd(Math.random);
-   var rnd3 = ak.geometricRnd(0.25, Math.random);
+   var rnd2 = ak.geometricRnd(rnd);
+   var rnd3 = ak.geometricRnd(0.25, rnd);
   
    var init = {
     name: 'init',
@@ -36,7 +38,10 @@
    init.add('cdf', function(){return cdf0.p()===0.5 && cdf1.p()===0.25;});
    init.add('cf', function(){return cf0.p()===0.5 && cf1.p()===0.25;});
    init.add('inv_cdf', function(){return inv_cdf0.p()===0.5 && inv_cdf1.p()===0.25;});
-   init.add('rnd', function(){return rnd0.p()===0.5 && rnd1.p()===0.25;});
+   init.add('rnd', function(){return rnd0.p()===0.5  && rnd0.rnd()===Math.random
+                                  && rnd1.p()===0.25 && rnd1.rnd()===Math.random
+                                  && rnd2.p()===0.5  && rnd2.rnd()===rnd
+                                  && rnd3.p()===0.25 && rnd3.rnd()===rnd});
   
    var val = {
     name: 'val',

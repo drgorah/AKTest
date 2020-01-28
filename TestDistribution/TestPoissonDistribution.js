@@ -9,6 +9,8 @@
   };
 
   try {
+   function rnd() {return Math.random();}
+
    var pmf0 = ak.poissonPMF();
    var pmf1 = ak.poissonPMF(2);
    var pmf2 = ak.poissonPMF(0.5);
@@ -31,8 +33,8 @@
    var rnd0 = ak.poissonRnd();
    var rnd1 = ak.poissonRnd(2);
    var rnd2 = ak.poissonRnd(0.5);
-   var rnd3 = ak.poissonRnd(Math.random);
-   var rnd4 = ak.poissonRnd(0.5, Math.random);
+   var rnd3 = ak.poissonRnd(rnd);
+   var rnd4 = ak.poissonRnd(0.5, rnd);
    var rnd5 = ak.poissonRnd(5);
    var rnd6 = ak.poissonRnd(100);
    var rnd7 = ak.poissonRnd(10000);
@@ -47,7 +49,11 @@
    init.add('cdf', function(){return cdf0.lambda()===1 && cdf1.lambda()===2 && cdf2.lambda()===0.5;});
    init.add('inv_cdf', function(){return inv_cdf0.lambda()===1 && inv_cdf1.lambda()===2 && inv_cdf2.lambda()===0.5;});
    init.add('cf', function(){return cf0.lambda()===1 && cf1.lambda()===2 && cf2.lambda()===0.5;});
-   init.add('rnd', function(){return rnd0.lambda()===1 && rnd1.lambda()===2 && rnd2.lambda()===0.5 && rnd3.lambda()===1 && rnd4.lambda()===0.5;});
+   init.add('rnd', function(){return rnd0.lambda()===1   && rnd0.rnd()===Math.random
+                                  && rnd1.lambda()===2   && rnd1.rnd()===Math.random
+                                  && rnd2.lambda()===0.5 && rnd2.rnd()===Math.random
+                                  && rnd3.lambda()===1   && rnd3.rnd()===rnd
+                                  && rnd4.lambda()===0.5 && rnd4.rnd()===rnd;});
   
    var val = {
     name: 'val',

@@ -9,6 +9,8 @@
   };
 
   try {
+   function rnd() {return Math.random();}
+
    var pdf0 = ak.uniformPDF();
    var pdf1 = ak.uniformPDF(2);
    var pdf2 = ak.uniformPDF(-2);
@@ -36,7 +38,7 @@
    var rnd0 = ak.uniformRnd();
    var rnd1 = ak.uniformRnd(2);
    var rnd2 = ak.uniformRnd(-2);
-   var rnd3 = ak.uniformRnd(2, 3, Math.random);
+   var rnd3 = ak.uniformRnd(2, 3, rnd);
    var rnd4 = ak.uniformRnd(5, 4);
   
    var init = {
@@ -49,7 +51,11 @@
    init.add('cdf', function(){return cdf0.a()===0 && cdf0.b()===1 && cdf1.a()===0 && cdf1.b()===2 && cdf2.a()===-2 && cdf2.b()===0 && cdf3.a()===2 && cdf3.b()===3 && cdf4.a()===4 && cdf4.b()===5;});
    init.add('inv_cdf', function(){return inv_cdf0.a()===0 && inv_cdf0.b()===1 && inv_cdf1.a()===0 && inv_cdf1.b()===2 && inv_cdf2.a()===-2 && inv_cdf2.b()===0 && inv_cdf3.a()===2 && inv_cdf3.b()===3 && inv_cdf4.a()===4 && inv_cdf4.b()===5;});
    init.add('cf', function(){return cf0.a()===0 && cf0.b()===1 && cf1.a()===0 && cf1.b()===2 && cf2.a()===-2 && cf2.b()===0 && cf3.a()===2 && cf3.b()===3 && cf4.a()===4 && cf4.b()===5;});
-   init.add('rnd', function(){return rnd0.a()===0 && rnd0.b()===1 && rnd1.a()===0 && rnd1.b()===2 && rnd2.a()===-2 && rnd2.b()===0 && rnd3.a()===2 && rnd3.b()===3 && rnd4.a()===4 && rnd4.b()===5;});
+   init.add('rnd', function(){return rnd0.a()===0  && rnd0.b()===1 && rnd0.rnd()===Math.random
+                                  && rnd1.a()===0  && rnd1.b()===2 && rnd1.rnd()===Math.random
+                                  && rnd2.a()===-2 && rnd2.b()===0 && rnd2.rnd()===Math.random
+                                  && rnd3.a()===2  && rnd3.b()===3 && rnd3.rnd()===rnd
+                                  && rnd4.a()===4  && rnd4.b()===5 && rnd4.rnd()===Math.random;});
   
    var val = {
     name: 'val',

@@ -9,6 +9,8 @@
   };
   
   try {
+   function rnd() {return Math.random();}
+
    var pdf0 = ak.gammaPDF();
    var pdf1 = ak.gammaPDF(2);
    var pdf2 = ak.gammaPDF(0.5);
@@ -41,10 +43,10 @@
    var rnd2  = ak.gammaRnd(0.5);
    var rnd3  = ak.gammaRnd(2, 0.5);
    var rnd4  = ak.gammaRnd(0.5, 2);
-   var rnd5  = ak.gammaRnd(Math.random);
-   var rnd6  = ak.gammaRnd(0.5, Math.random);
-   var rnd7  = ak.gammaRnd(0.5, 2, Math.random);
-   var rnd8  = ak.gammaRnd(2.5, 2, Math.random);
+   var rnd5  = ak.gammaRnd(rnd);
+   var rnd6  = ak.gammaRnd(0.5, rnd);
+   var rnd7  = ak.gammaRnd(0.5, 2, rnd);
+   var rnd8  = ak.gammaRnd(2.5, 2, rnd);
    var rnd9  = ak.gammaRnd(7.25, 2.5);
    var rnd10 = ak.gammaRnd(100000, 100000);
   
@@ -60,8 +62,15 @@
    inv_cdf1.lambda()===1 && inv_cdf2.k()===0.5 && inv_cdf2.lambda()===1 && inv_cdf3.k()===2 && inv_cdf3.lambda()===0.5 && inv_cdf4.k()===0.5 && inv_cdf4.lambda()===2;});
    init.add('cf', function(){return cf0.k()===1 && cf0.lambda()===1 && cf1.k()===2 &&
    cf1.lambda()===1 && cf2.k()===0.5 && cf2.lambda()===1 && cf3.k()===2 && cf3.lambda()===0.5 && cf4.k()===0.5 && cf4.lambda()===2;});
-   init.add('rnd', function(){return rnd0.k()===1 && rnd0.lambda()===1 && rnd1.k()===2 &&
-   rnd1.lambda()===1 && rnd2.k()===0.5 && rnd2.lambda()===1 && rnd3.k()===2 && rnd3.lambda()===0.5 && rnd4.k()===0.5 && rnd4.lambda()===2;});
+   init.add('rnd', function(){return rnd0.k()===1   && rnd0.lambda()===1   && rnd0.rnd()===Math.random
+                                  && rnd1.k()===2   && rnd1.lambda()===1   && rnd1.rnd()===Math.random
+                                  && rnd2.k()===0.5 && rnd2.lambda()===1   && rnd2.rnd()===Math.random
+                                  && rnd3.k()===2   && rnd3.lambda()===0.5 && rnd3.rnd()===Math.random
+                                  && rnd4.k()===0.5 && rnd4.lambda()===2   && rnd4.rnd()===Math.random
+                                  && rnd5.k()===1   && rnd5.lambda()===1   && rnd5.rnd()===rnd
+                                  && rnd6.k()===0.5 && rnd6.lambda()===1   && rnd6.rnd()===rnd
+                                  && rnd7.k()===0.5 && rnd7.lambda()===2   && rnd7.rnd()===rnd
+                                  && rnd8.k()===2.5 && rnd8.lambda()===2   && rnd8.rnd()===rnd;});
    
    var val = {
     name: 'val',

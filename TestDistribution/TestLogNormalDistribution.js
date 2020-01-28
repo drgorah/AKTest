@@ -9,6 +9,8 @@
   };
 
   try {
+   function rnd() {return Math.random();}
+
    var pdf0 = ak.logNormalPDF();
    var pdf1 = ak.logNormalPDF(2);
    var pdf2 = ak.logNormalPDF(-1, 0.1);
@@ -20,14 +22,17 @@
    var inv_cdf0 = ak.logNormalInvCDF();
    var inv_cdf1 = ak.logNormalInvCDF(2);
    var inv_cdf2 = ak.logNormalInvCDF(-1, 0.1);
-  
-   var rnd0 = ak.logNormalRnd();
-   var rnd1 = ak.logNormalRnd(2);
-   var rnd2 = ak.logNormalRnd(-1, 0.1);
-  
+
    var cf0 = ak.logNormalCF();
    var cf1 = ak.logNormalCF(2);
    var cf2 = ak.logNormalCF(-1, 0.1, 1e-5, 10);
+
+   var rnd0 = ak.logNormalRnd();
+   var rnd1 = ak.logNormalRnd(2);
+   var rnd2 = ak.logNormalRnd(-1, 0.1);
+   var rnd3 = ak.logNormalRnd(rnd);
+   var rnd4 = ak.logNormalRnd(2, rnd);
+   var rnd5 = ak.logNormalRnd(-1, 0.1, rnd);
   
    var init = {
     name: 'init',
@@ -38,8 +43,13 @@
    init.add('pdf', function(){return pdf0.mu()===0 && pdf0.sigma()===1 && pdf1.mu()===0 && pdf1.sigma()===2 && pdf2.mu()===-1 && pdf2.sigma()===0.1;});
    init.add('cdf', function(){return cdf0.mu()===0 && cdf0.sigma()===1 && cdf1.mu()===0 && cdf1.sigma()===2 && cdf2.mu()===-1 && cdf2.sigma()===0.1;});
    init.add('inv_cdf', function(){return inv_cdf0.mu()===0 && inv_cdf0.sigma()===1 && inv_cdf1.mu()===0 && inv_cdf1.sigma()===2 && inv_cdf2.mu()===-1 && inv_cdf2.sigma()===0.1;});
-   init.add('rnd', function(){return rnd0.mu()===0 && rnd0.sigma()===1 && rnd1.mu()===0 && rnd1.sigma()===2 && rnd2.mu()===-1 && rnd2.sigma()===0.1;});
    init.add('cf', function(){return cf0.mu()===0 && cf0.sigma()===1 && cf1.mu()===0 && cf1.sigma()===2 && cf2.mu()===-1 && cf2.sigma()===0.1;});
+   init.add('rnd', function(){return rnd0.mu()===0  && rnd0.sigma()===1   && rnd0.rnd()===Math.random
+                                  && rnd1.mu()===0  && rnd1.sigma()===2   && rnd1.rnd()===Math.random
+                                  && rnd2.mu()===-1 && rnd2.sigma()===0.1 && rnd2.rnd()===Math.random
+                                  && rnd3.mu()===0  && rnd3.sigma()===1   && rnd3.rnd()===rnd
+                                  && rnd4.mu()===0  && rnd4.sigma()===2   && rnd4.rnd()===rnd
+                                  && rnd5.mu()===-1 && rnd5.sigma()===0.1 && rnd5.rnd()===rnd;});
   
    var val = {
     name: 'val',
