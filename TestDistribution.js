@@ -2,6 +2,7 @@
 
 (function() {
  var all = [];
+ all.push('TestDistribution/TestBinomialDistribution.js');
  all.push('TestDistribution/TestCauchyDistribution.js');
  all.push('TestDistribution/TestCopulaDistribution.js');
  all.push('TestDistribution/TestExponentialDistribution.js');
