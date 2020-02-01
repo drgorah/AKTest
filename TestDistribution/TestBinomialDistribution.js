@@ -18,29 +18,34 @@
    var pmf4 = ak.binomialPMF(32, 0.75);
    var pmf5 = ak.binomialPMF(128, 0.25);
    var pmf6 = ak.binomialPMF(128, 0.75);
+   var pmf7 = ak.binomialPMF(0);
 
    var cdf0 = ak.binomialCDF();
    var cdf1 = ak.binomialCDF(5);
    var cdf2 = ak.binomialCDF(5, 0.25);
+   var cdf3 = ak.binomialCDF(0);
 
    var inv_cdf0 = ak.binomialInvCDF();
    var inv_cdf1 = ak.binomialInvCDF(5);
    var inv_cdf2 = ak.binomialInvCDF(5, 0.25);
+   var inv_cdf3 = ak.binomialInvCDF(0);
 
    var cf0 = ak.binomialCF();
    var cf1 = ak.binomialCF(5);
    var cf2 = ak.binomialCF(5, 0.25);
+   var cf3 = ak.binomialCF(0);
 
-   var rnd0 = ak.binomialRnd();
-   var rnd1 = ak.binomialRnd(5);
-   var rnd2 = ak.binomialRnd(5, 0.25);
-   var rnd3 = ak.binomialRnd(rnd);
-   var rnd4 = ak.binomialRnd(5, rnd);
-   var rnd5 = ak.binomialRnd(5, 0.25, rnd);
-   var rnd6 = ak.binomialRnd(32, 0.25);
-   var rnd7 = ak.binomialRnd(32, 0.75);
-   var rnd8 = ak.binomialRnd(128, 0.25);
-   var rnd9 = ak.binomialRnd(128, 0.75);
+   var rnd0  = ak.binomialRnd();
+   var rnd1  = ak.binomialRnd(5);
+   var rnd2  = ak.binomialRnd(5, 0.25);
+   var rnd3  = ak.binomialRnd(rnd);
+   var rnd4  = ak.binomialRnd(5, rnd);
+   var rnd5  = ak.binomialRnd(5, 0.25, rnd);
+   var rnd6  = ak.binomialRnd(32, 0.25);
+   var rnd7  = ak.binomialRnd(32, 0.75);
+   var rnd8  = ak.binomialRnd(128, 0.25);
+   var rnd9  = ak.binomialRnd(128, 0.75);
+   var rnd10 = ak.binomialRnd(0);
 
    var init = {
     name: 'init',
@@ -94,7 +99,7 @@
     return true;
    }
    
-   val.add('pmf', function(){return testPMF(pmf0) && testPMF(pmf1) && testPMF(pmf2);});
+   val.add('pmf', function(){return testPMF(pmf0) && testPMF(pmf1) && testPMF(pmf2) && testPMF(pmf7);});
   
    function testCDF(cdf, pmf) {
     var k;
@@ -105,7 +110,7 @@
     return true;
    }  
    
-   val.add('cdf', function(){return testCDF(cdf0, pmf0) && testCDF(cdf1, pmf1) && testCDF(cdf2, pmf2);});
+   val.add('cdf', function(){return testCDF(cdf0, pmf0) && testCDF(cdf1, pmf1) && testCDF(cdf2, pmf2) && testCDF(cdf3, pmf7);});
   
    function testInv(inv, cdf) {
     var n = cdf.n();
@@ -123,7 +128,7 @@
     return true;
    }
   
-   val.add('inv_cdf', function(){return testInv(inv_cdf0, cdf0) && testInv(inv_cdf1, cdf1) && testInv(inv_cdf2, cdf2);});
+   val.add('inv_cdf', function(){return testInv(inv_cdf0, cdf0) && testInv(inv_cdf1, cdf1) && testInv(inv_cdf2, cdf2) && testInv(inv_cdf3, cdf3);});
 
    function eitx(pmf, t) {
     var n = pmf.n();
@@ -145,7 +150,7 @@
     return true;
    }
 
-   val.add('cf', function(){return testcf(cf0, pmf0) && testcf(cf1, pmf1) && testcf(cf2, pmf2);});
+   val.add('cf', function(){return testcf(cf0, pmf0) && testcf(cf1, pmf1) && testcf(cf2, pmf2) && testcf(cf3, pmf7);});
    
    function testRnd(rnd, pmf) {
     var n = 100000;
@@ -162,7 +167,8 @@
    val.add('rnd', function(){return testRnd(rnd0, pmf0) && testRnd(rnd1, pmf1) && testRnd(rnd2, pmf2)
                                  && testRnd(rnd3, pmf0) && testRnd(rnd4, pmf1) && testRnd(rnd5, pmf2)
                                  && testRnd(rnd6, pmf3) && testRnd(rnd7, pmf4)
-                                 && testRnd(rnd8, pmf5) && testRnd(rnd9, pmf6);});
+                                 && testRnd(rnd8, pmf5) && testRnd(rnd9, pmf6)
+                                 && testRnd(rnd10, pmf7);});
   
    binomial.add(init);
    binomial.add(val);
