@@ -14,15 +14,11 @@
    var pmf0 = ak.negativeBinomialPMF();
    var pmf1 = ak.negativeBinomialPMF(5);
    var pmf2 = ak.negativeBinomialPMF(5, 0.25);
-   var pmf3 = ak.negativeBinomialPMF(0);
-   var pmf4 = ak.negativeBinomialPMF(5, 1);
-   var pmf5 = ak.negativeBinomialPMF(100, 0.25);
+   var pmf3 = ak.negativeBinomialPMF(100, 0.25);
 
    var cdf0 = ak.negativeBinomialCDF();
    var cdf1 = ak.negativeBinomialCDF(5);
    var cdf2 = ak.negativeBinomialCDF(5, 0.25);
-   var cdf3 = ak.negativeBinomialCDF(0);
-   var cdf4 = ak.negativeBinomialCDF(5, 1);
 
    var inv_cdf0 = ak.negativeBinomialInvCDF();
    var inv_cdf1 = ak.negativeBinomialInvCDF(5);
@@ -31,7 +27,6 @@
    var cf0 = ak.negativeBinomialCF();
    var cf1 = ak.negativeBinomialCF(5);
    var cf2 = ak.negativeBinomialCF(5, 0.25);
-   var cf3 = ak.negativeBinomialCF(0);
 
    var rnd0 = ak.negativeBinomialRnd();
    var rnd1 = ak.negativeBinomialRnd(5);
@@ -39,9 +34,7 @@
    var rnd3 = ak.negativeBinomialRnd(rnd);
    var rnd4 = ak.negativeBinomialRnd(5, rnd);
    var rnd5 = ak.negativeBinomialRnd(5, 0.25, rnd);
-   var rnd6 = ak.negativeBinomialRnd(0);
-   var rnd7 = ak.negativeBinomialRnd(5, 1);
-   var rnd8 = ak.negativeBinomialRnd(100, 0.25);
+   var rnd6 = ak.negativeBinomialRnd(100, 0.25);
 
    var init = {
     name: 'init',
@@ -78,19 +71,6 @@
     add: function(n, b) {this.body.push({name: n, body: b});}
    };
 
-   function testPMF0(pmf) {
-    var k;
-    if(pmf(0)!==1) return false;
-    for(k=1;k<=10;++k) if(pmf(k)!==0) return false;
-    return true;
-   }
-
-   function testPMF1(pmf) {
-    var k;
-    for(k=0;k<=10;++k) if(pmf(k)!==0) return false;
-    return pmf(ak.INFINITY)===1;
-   }
-
    function testPMF(pmf) {
     var r = pmf.r();
     var p = pmf.p();
@@ -102,19 +82,7 @@
     return true;
    }
    
-   val.add('pmf', function(){return testPMF(pmf0) && testPMF(pmf1) && testPMF(pmf2) && testPMF0(pmf3) && testPMF1(pmf4);});
-
-   function testCDF0(cdf) {
-    var k;
-    for(k=0;k<=10;++k) if(cdf(k)!==1) return false;
-    return true;
-   }
-
-   function testCDF1(cdf) {
-    var k;
-    for(k=0;k<=10;++k) if(cdf(k)!==0) return false;
-    return cdf(ak.INFINITY)===1;
-   }
+   val.add('pmf', function(){return testPMF(pmf0) && testPMF(pmf1) && testPMF(pmf2);});
   
    function testCDF(cdf, pmf) {
     var k;
@@ -125,7 +93,7 @@
     return true;
    }  
    
-   val.add('cdf', function(){return testCDF(cdf0, pmf0) && testCDF(cdf1, pmf1) && testCDF(cdf2, pmf2) && testCDF0(cdf3) && testCDF1(cdf4);});
+   val.add('cdf', function(){return testCDF(cdf0, pmf0) && testCDF(cdf1, pmf1) && testCDF(cdf2, pmf2);});
   
    function testInv(inv, cdf) {
     var c, k;
@@ -170,7 +138,7 @@
     return true;
    }
 
-   val.add('cf', function(){return testcf(cf0, pmf0) && testcf(cf1, pmf1) && testcf(cf2, pmf2) && testcf(cf3, pmf3);});
+   val.add('cf', function(){return testcf(cf0, pmf0) && testcf(cf1, pmf1) && testcf(cf2, pmf2);});
    
    function testRnd(rnd, pmf) {
     var n = 100000;
@@ -186,7 +154,7 @@
 
    val.add('rnd', function(){return testRnd(rnd0, pmf0) && testRnd(rnd1, pmf1) && testRnd(rnd2, pmf2)
                                  && testRnd(rnd3, pmf0) && testRnd(rnd4, pmf1) && testRnd(rnd5, pmf2)
-                                 && testRnd(rnd6, pmf3) && testRnd(rnd7, pmf4) && testRnd(rnd8, pmf5);});
+                                 && testRnd(rnd6, pmf3);});
   
    negativeBinomial.add(init);
    negativeBinomial.add(val);
