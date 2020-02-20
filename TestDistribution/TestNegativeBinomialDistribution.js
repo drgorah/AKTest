@@ -77,7 +77,7 @@
     var k;
     
     for(k=0;k<=10;++k) {
-     if(ak.diff(pmf(k),Math.pow(p, k)*Math.pow(1-p, r)*ak.gamma(k+r)/(ak.gamma(k+1)*ak.gamma(r)))>1e-10) return false;
+     if(ak.diff(pmf(k),Math.pow(1-p, k)*Math.pow(p, r)*ak.gamma(k+r)/(ak.gamma(r)*ak.gamma(k+1)))>1e-10) return false;
     }
     return true;
    }
