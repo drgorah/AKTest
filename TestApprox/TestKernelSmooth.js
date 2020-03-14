@@ -78,21 +78,20 @@
    function compare(f, rndx, rndy, n) {
     var x = makeVals(rndx, n);
     var y = makeVals(rndy, n);
-    var s = ak.kernelSmooth(x, y, f);
+    var s = ak.kernelSmooth(x, y, function(x0, x1) {return f(ak.sub(x0, x1));});
     var i, j, xi, yi, w, y0, y1;
 
     for(i=0;i<n;++i) {
      xi = rndx();
      yi = s(xi);
-     w = f(ak.sub(x[0], xi));
-     y0 = ak.mul(w, y[0]);
-     y1 = w;
-     for(j=1;j<n;++j) {
+     y0 = 0;
+     y1 = 0;
+     for(j=0;j<n;++j) {
       w = f(ak.sub(x[j], xi));
-      y0 = ak.add(y0, ak.mul(w, y[j]));
+      y0 += w * y[j];
       y1 += w;
      }
-     if(ak.diff(yi, ak.div(y0, y1))>1e-10) return false;
+     if(ak.diff(yi, y0/y1)>1e-10) return false;
     }
     return true;
    }
@@ -103,10 +102,8 @@
     add: function(n, b) {this.body.push({name: n, body: b});}
    };
 
-   val.add('number-number', function() {return compare(ak.normalPDF(), Math.random, Math.random, 100);});
-   val.add('number-vector', function() {return compare(ak.normalPDF(), Math.random, ak.multiUniformRnd(), 100);});
-   val.add('vector-number', function() {return compare(ak.multiNormalPDF(), ak.multiUniformRnd(), Math.random, 100);});
-   val.add('vector-vector', function() {return compare(ak.multiNormalPDF(), ak.multiUniformRnd(), ak.multiUniformRnd(), 100);});
+   val.add('number', function() {return compare(ak.normalPDF(), Math.random, Math.random, 100);});
+   val.add('vector', function() {return compare(ak.multiNormalPDF(), ak.multiUniformRnd(), Math.random, 100);});
 
    kernelSmooth.add(init);
    kernelSmooth.add(val);
