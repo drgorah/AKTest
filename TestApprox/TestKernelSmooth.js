@@ -33,12 +33,22 @@
     if(!result) return false;
 
     result = false;
+    try{ak.kernelSmooth([1, 2, 3], [4, 'a', 6], ak.normalPDF());}
+    catch(e){result = true;}
+    if(!result) return false;
+
+    result = false;
     try{ak.kernelSmooth([{x:1, y:1}, {x:2, y:2}, {x:3, y:3}], 'a');}
     catch(e){result = true;}
     if(!result) return false;
 
     result = false;
     try{ak.kernelSmooth([{x:1, y:1}, {x:2, y:2}, 'a'], ak.normnalPDF());}
+    catch(e){result = true;}
+    if(!result) return false;
+
+    result = false;
+    try{ak.kernelSmooth([{x:1, y:1}, {x:2, y:2}, {x:3, y:'a'}], ak.normnalPDF());}
     catch(e){result = true;}
     if(!result) return false;
 
