@@ -8,5 +8,6 @@
  all.push('TestOptimise/TestGeneticMinimum.js');
  all.push('TestOptimise/TestGoldenMinimum.js');
  all.push('TestOptimise/TestPolytopeMinimum.js');
+ all.push('TestOptimise/TestWolfeLineSearch.js');
  ak.using(all);
 })();
