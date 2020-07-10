@@ -12,6 +12,7 @@
  all.push('TestDistribution/TestGeometricDistribution.js');
  all.push('TestDistribution/TestGumbelDistribution.js');
  all.push('TestDistribution/TestLogNormalDistribution.js');
+ all.push('TestDistribution/TestMixtureDistribution.js');
  all.push('TestDistribution/TestMultiNormalDistribution.js');
  all.push('TestDistribution/TestMultiUniformDistribution.js');
  all.push('TestDistribution/TestNegativeBinomialDistribution.js');
