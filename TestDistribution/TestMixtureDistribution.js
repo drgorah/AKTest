@@ -29,6 +29,10 @@
    var normRnd1 = ak.normalRnd(1, 0.5);
    var mixRnd = ak.mixtureRnd([normRnd0, normRnd1], [1, 2], rnd);
 
+   var binomPMF0 = ak.binomialPMF(5, 0.5);
+   var binomPMF1 = ak.binomialPMF(7, 0.25);
+   var mixPMF = ak.mixturePMF([binomPMF0, binomPMF1], [1, 2]);
+
    var s00 = 1;
    var s01 = 0.5;
    var r0 = 0.5;
@@ -76,6 +80,7 @@
    init.add('uni inv cdf', function(){return mixInvCDF.cdfs()[0]===normCDF0 && mixInvCDF.cdfs()[1]===normCDF1 && mixInvCDF.weights()[0]===1 && mixInvCDF.weights()[1]===2;});
    init.add('uni cf', function(){return mixCF.cfs()[0]===normCF0 && mixCF.cfs()[1]===normCF1 && mixCF.weights()[0]===1 && mixCF.weights()[1]===2;});
    init.add('uni rnd', function(){return mixRnd.rnds()[0]===normRnd0 && mixRnd.rnds()[1]===normRnd1 && mixRnd.weights()[0]===1 && mixRnd.weights()[1]===2 && mixRnd.rnd()===rnd;});
+   init.add('uni pmf', function(){return mixPMF.pmfs()[0]===binomPMF0 && mixPMF.pmfs()[1]===binomPMF1 && mixPMF.weights()[0]===1 && mixPMF.weights()[1]===2;});
 
    init.add('multi pdf', function(){return multiMixPDF.pdfs()[0]===multiNormPDF0 && multiMixPDF.pdfs()[1]===multiNormPDF1 && multiMixPDF.weights()[0]===1 && multiMixPDF.weights()[1]===2;});
    init.add('multi cdf', function(){return multiMixCDF.cdfs()[0]===multiNormCDF0 && multiMixCDF.cdfs()[1]===multiNormCDF1 && multiMixCDF.weights()[0]===1 && multiMixCDF.weights()[1]===2;});
@@ -211,6 +216,18 @@
 
    val.add('uni rnd', uniRnd);
 
+   function uniPMF() {
+    var k, p0, p1;
+    for(k=-1;k<10;k+=0.5) {
+     p0 = mixPMF(k);
+     p1 = (binomPMF0(k) + 2*binomPMF1(k))/3;
+     if(ak.diff(p0, p1)>1e-12) return false;
+    }
+    return true;
+   }
+
+   val.add('uni pmf', uniPMF);
+
    function multiPDF() {
     var n = 100;
     var i, x, p0, p1;
@@ -343,5 +360,5 @@
   akTest.add(mixture);
  }
 
- ak.using(['Distribution/MixtureDistribution.js', 'Distribution/NormalDistribution.js', 'Distribution/MultiNormalDistribution.js', 'Distribution/MultiUniformDistribution.js'], define);
+ ak.using(['Distribution/MixtureDistribution.js', 'Distribution/NormalDistribution.js', 'Distribution/BinomialDistribution.js', 'Distribution/MultiNormalDistribution.js', 'Distribution/MultiUniformDistribution.js'], define);
 })();
