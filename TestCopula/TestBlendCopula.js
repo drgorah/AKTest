@@ -14,6 +14,7 @@
 
    var element0 = ak.blendCopulaElement(gumbel, [0, 1], [2, 1]);
    var element1 = ak.blendCopulaElement(joe, [1, 2], [1, 2]);
+   var element2 = ak.blendCopulaElement(ak.independentCopula(3), [2, 0, 1], [1, 2, 1]);
 
    var copula = ak.blendCopula([element0, element1]);
    var density = ak.blendCopulaDensity([element0, element1]);
@@ -31,7 +32,7 @@
     try {ak.blendCopulaElement(ak.independentCopula(2), ['a', 1], [1, 2]); return false;} catch(e) {}
     try {ak.blendCopulaElement(ak.independentCopula(2), [-1, 1], [1, 2]); return false;} catch(e) {}
     try {ak.blendCopulaElement(ak.independentCopula(2), [0, ak.INFINITY], [1, 2]); return false;} catch(e) {}
-    try {ak.blendCopulaElement(ak.independentCopula(2), [1, 1], [1, 2]); return false;} catch(e) {}
+    try {ak.blendCopulaElement(ak.independentCopula(3), [1, 0, 1], [1, 2, 1]); return false;} catch(e) {}
     try {ak.blendCopulaElement(ak.independentCopula(2), [0, 1], ['a', 2]); return false;} catch(e) {}
     try {ak.blendCopulaElement(ak.independentCopula(2), [0, 1], [-1, 2]); return false;} catch(e) {}
     try {ak.blendCopulaElement(ak.independentCopula(2), [0, 1], [1, ak.INFINITY]); return false;} catch(e) {}
@@ -56,7 +57,8 @@
    init.add('bad', bad);
    init.add('element', function(){return element0.copula()===gumbel && element0.args()===2
                                       && element0.id(0)===0 && element0.id(1)===1
-                                      && element0.weight(0)===2 && element0.weight(1)===1;});
+                                      && element0.weight(0)===2 && element0.weight(1)===1
+                                      && element2.max()===2;});
    init.add('copula', function(){return copula.elements()[0]===element0 && copula.elements()[1]===element1;});
    init.add('density', function(){return density.elements()[0]===element0 && density.elements()[1]===element1;});
 
