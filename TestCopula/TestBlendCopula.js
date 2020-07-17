@@ -31,7 +31,7 @@
     try {ak.blendCopulaElement(ak.independentCopula(2), ['a', 1], [1, 2]); return false;} catch(e) {}
     try {ak.blendCopulaElement(ak.independentCopula(2), [-1, 1], [1, 2]); return false;} catch(e) {}
     try {ak.blendCopulaElement(ak.independentCopula(2), [0, ak.INFINITY], [1, 2]); return false;} catch(e) {}
-    try {ak.blendCopulaElement(ak.independentCopula(2), [1, 0], [1, 2]); return false;} catch(e) {}
+    try {ak.blendCopulaElement(ak.independentCopula(2), [1, 1], [1, 2]); return false;} catch(e) {}
     try {ak.blendCopulaElement(ak.independentCopula(2), [0, 1], ['a', 2]); return false;} catch(e) {}
     try {ak.blendCopulaElement(ak.independentCopula(2), [0, 1], [-1, 2]); return false;} catch(e) {}
     try {ak.blendCopulaElement(ak.independentCopula(2), [0, 1], [1, ak.INFINITY]); return false;} catch(e) {}
