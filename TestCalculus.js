@@ -4,6 +4,7 @@
  var all = [];
  all.push('TestCalculus/TestEulerODE.js');
  all.push('TestCalculus/TestFiniteDifference.js');
+ all.push('TestCalculus/TestMidpointODE.js');
  all.push('TestCalculus/TestMonteCarloIntegral.js');
  all.push('TestCalculus/TestNestedIntegral.js');
  all.push('TestCalculus/TestPolynomialDerivative.js');
