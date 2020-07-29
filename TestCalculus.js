@@ -11,6 +11,7 @@
  all.push('TestCalculus/TestQuasiRandomIntegral.js');
  all.push('TestCalculus/TestRidderDerivative.js');
  all.push('TestCalculus/TestRombergIntegral.js');
+ all.push('TestCalculus/TestRungeKuttaODE.js');
  all.push('TestCalculus/TestSymbolicDerivative.js');
  all.push('TestCalculus/TestSurreal.js');
  all.push('TestCalculus/TestSimpsonIntegral.js');
