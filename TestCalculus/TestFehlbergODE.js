@@ -16,8 +16,8 @@
    };
 
    var a = [[1/4],[3/32,9/32],[1932/2197,-7200/2197,7296/2197],[439/216,-8,3680/513,-845/4104],[-8/27,2,-3544/2565,1859/4104,-11/40]];
-   var b0 = [2375,0,11264,10985,-4104,0];
-   var b1 = [33440,0,146432,142805,-50787,10260];
+   var b0 = [33440,0,146432,142805,-50787,10260];
+   var b1 = [2375,0,11264,10985,-4104,0];
    var c = [1/4,3/8,12/13,1,1/2];
 
    invalidArguments.add('non-function', function(){try{ak.fehlbergODE(1, 0.1, 0.1, 0.2, 5, a, b0, b1, c);} catch(e){return true;} return false;});
@@ -93,7 +93,7 @@
     for(i=0;i<n;++i) {
      var ti = tn * i/n;
      var xi = ode(0, ti, ak.vector([1,0]));
-     if(ak.diff(xi.at(0), Math.exp(-ti)*(Math.cos(10*ti)+0.1*Math.sin(10*ti)))>10*e1) {alert(xi.at(0) + '\n' + Math.exp(-ti)*(Math.cos(10*ti)+0.1*Math.sin(10*ti)));return false;}
+     if(ak.diff(xi.at(0), Math.exp(-ti)*(Math.cos(10*ti)+0.1*Math.sin(10*ti)))>10*e1) return false;
     }
     return true;
    }
