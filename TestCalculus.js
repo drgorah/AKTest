@@ -3,6 +3,7 @@
 (function() {
  var all = [];
  all.push('TestCalculus/TestEulerODE.js');
+ all.push('TestCalculus/TestFehlbergODE.js');
  all.push('TestCalculus/TestFiniteDifference.js');
  all.push('TestCalculus/TestMidpointODE.js');
  all.push('TestCalculus/TestMonteCarloIntegral.js');
