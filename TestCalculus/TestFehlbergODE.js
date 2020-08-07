@@ -20,38 +20,37 @@
    var b1 = [2375,0,11264,10985,-4104,0];
    var c = [1/4,3/8,12/13,1,1/2];
 
-   invalidArguments.add('non-function', function(){try{ak.fehlbergODE(1, 0.1, 0.1, 0.2, 5, a, b0, b1, c);} catch(e){return true;} return false;});
-   invalidArguments.add('NaN-width', function(){try{ak.fehlbergODE(Math.exp, ak.NaN, 0.1, 0.2, 5, a, b0, b1, c);} catch(e){return true;} return false;});
-   invalidArguments.add('NaN min eps', function(){try{ak.fehlbergODE(Math.exp, 0.1, ak.NaN, 0.2, 5, a, b0, b1, c);} catch(e){return true;} return false;});
-   invalidArguments.add('NaN max eps', function(){try{ak.fehlbergODE(Math.exp, 0.1, 0.1, ak.NaN, 5, a, b0, b1, c);} catch(e){return true;} return false;});
-   invalidArguments.add('unordered eps', function(){try{ak.fehlbergODE(Math.exp, 0.1, 0.2, 0.1, 5, a, b0, b1, c);} catch(e){return true;} return false;});
-   invalidArguments.add('NaN order', function(){try{ak.fehlbergODE(Math.exp, 0.1, 0.1, 0.2, ak.NaN, a, b0, b1, c);} catch(e){return true;} return false;});
-   invalidArguments.add('non-integer order', function(){try{ak.fehlbergODE(Math.exp, 0.1, 0.1, 0.2, 4.5, a, b0, b1, c);} catch(e){return true;} return false;});
-   invalidArguments.add('non-array a', function(){try{ak.fehlbergODE(Math.exp, 0.1, 0.1, 0.2, 5, 'a', b0, b1, c);} catch(e){return true;} return false;});
-   invalidArguments.add('non-array a row', function(){try{ak.fehlbergODE(Math.exp, 0.1, 0.1, 0.2, 5, [a[0],'a1',a[2]], b0, b1, c);} catch(e){return true;} return false;});
-   invalidArguments.add('size mismatch a row', function(){try{ak.fehlbergODE(Math.exp, 0.1, 0.1, 0.2, 5, [a[0],[0,0.5,0],a[2]], b0, b1, c);} catch(e){return true;} return false;});
-   invalidArguments.add('non-number a element', function(){try{ak.fehlbergODE(Math.exp, 0.1, 0.1, 0.2, 5, [a[0],['a',0.5],a[2]], b0, b1, c);} catch(e){return true;} return false;});
-   invalidArguments.add('NaN a element', function(){try{ak.fehlbergODE(Math.exp, 0.1, 0.1, 0.2, 5, [a[0],[0,ak.NaN],a[2]], b0, b1, c);} catch(e){return true;} return false;});
-   invalidArguments.add('non-array b0', function(){try{ak.fehlbergODE(Math.exp, 0.1, 0.1, 0.2, 5, a, 'b0', b1, c);} catch(e){return true;} return false;});
-   invalidArguments.add('size mismatch b0', function(){try{ak.fehlbergODE(Math.exp, 0.1, 0.1, 0.2, 5, a, c, b1, c);} catch(e){return true;} return false;});
-   invalidArguments.add('zero b0', function(){try{ak.fehlbergODE(Math.exp, 0.1, 0.1, 0.2, 5, a, [0,0,0,0], b1, c);} catch(e){return true;} return false;});
-   invalidArguments.add('non-number b0 element', function(){try{ak.fehlbergODE(Math.exp, 0.1, 0.1, 0.2, 5, a, [1,2,'a',1], b1, c);} catch(e){return true;} return false;});
-   invalidArguments.add('NaN b0 element', function(){try{ak.fehlbergODE(Math.exp, 0.1, 0.1, 0.2, 5, a, [1,2,ak.NaN,1], b1, c);} catch(e){return true;} return false;});
-   invalidArguments.add('non-array b1', function(){try{ak.fehlbergODE(Math.exp, 0.1, 0.1, 0.2, 5, a, b0, 'b1', c);} catch(e){return true;} return false;});
-   invalidArguments.add('size mismatch b1', function(){try{ak.fehlbergODE(Math.exp, 0.1, 0.1, 0.2, 5, a, b0, c, c);} catch(e){return true;} return false;});
-   invalidArguments.add('zero b1', function(){try{ak.fehlbergODE(Math.exp, 0.1, 0.1, 0.2, 5, a, b0, [0,0,0,0], c);} catch(e){return true;} return false;});
-   invalidArguments.add('non-number b1 element', function(){try{ak.fehlbergODE(Math.exp, 0.1, 0.1, 0.2, 5, a, b0, [1,2,'a',1], c);} catch(e){return true;} return false;});
-   invalidArguments.add('NaN b1 element', function(){try{ak.fehlbergODE(Math.exp, 0.1, 0.1, 0.2, 5, a, b1, [1,2,ak.NaN,1], c);} catch(e){return true;} return false;});
-   invalidArguments.add('non-array c', function(){try{ak.fehlbergODE(Math.exp, 0.1, 0.1, 0.2, 5, a, b0, b1, 'c');} catch(e){return true;} return false;});
-   invalidArguments.add('size mismatch c', function(){try{ak.fehlbergODE(Math.exp, 0.1, 0.1, 0.2, 5, a, b0, b1, b0);} catch(e){return true;} return false;});
-   invalidArguments.add('non-number c element', function(){try{ak.fehlbergODE(Math.exp, 0.1, 0.1, 0.2, 5, a, b0, b1, [0.5,0.5,'a']);} catch(e){return true;} return false;});
-   invalidArguments.add('zero c element', function(){try{ak.fehlbergODE(Math.exp, 0.1, 0.1, 0.2, 5, a, b0, b1, [0.5,0.5,0]);} catch(e){return true;} return false;});
-   invalidArguments.add('NaN c element', function(){try{ak.fehlbergODE(Math.exp, 0.1, 0.1, 0.2, 5, a, b0, b1, [0.5,0.5,ak.NaN]);} catch(e){return true;} return false;});
-   invalidArguments.add('non-number steps', function(){try{ak.fehlbergODE(Math.exp, 0.1, 0.1, 0.2, 5, a, b0, b1, c, 'a');} catch(e){return true;} return false;});
-   invalidArguments.add('NaN x0', function(){try{ak.fehlbergODE(Math.exp, 0.1, 0.1, 0.2, 5, a, b0, b1, c)(ak.NaN, 1, 1);} catch(e){return true;} return false;});
-   invalidArguments.add('NaN x1', function(){try{ak.fehlbergODE(Math.exp, 0.1, 0.1, 0.2, 5, a, b0, b1, c)(1, ak.NaN, 1);} catch(e){return true;} return false;});
-   invalidArguments.add('infinite x0', function(){try{ak.fehlbergODE(Math.exp, 0.1, 0.1, 0.2, 5, a, b0, b1, c)(-ak.INFINITY, 0, 1);} catch(e){return true;} return false;});
-   invalidArguments.add('infinite x1', function(){try{ak.fehlbergODE(Math.exp, 0.1, 0.1, 0.2, 5, a, b0, b1, c)(0, ak.INFINITY, 1);} catch(e){return true;} return false;});
+   invalidArguments.add('non-function', function(){try{ak.fehlbergODE(1, 0.1, 0.2, 5, a, b0, b1, c);} catch(e){return true;} return false;});
+   invalidArguments.add('NaN min eps', function(){try{ak.fehlbergODE(Math.exp, ak.NaN, 0.2, 5, a, b0, b1, c);} catch(e){return true;} return false;});
+   invalidArguments.add('NaN max eps', function(){try{ak.fehlbergODE(Math.exp, 0.1, ak.NaN, 5, a, b0, b1, c);} catch(e){return true;} return false;});
+   invalidArguments.add('unordered eps', function(){try{ak.fehlbergODE(Math.exp, 0.2, 0.1, 5, a, b0, b1, c);} catch(e){return true;} return false;});
+   invalidArguments.add('NaN order', function(){try{ak.fehlbergODE(Math.exp, 0.1, 0.2, ak.NaN, a, b0, b1, c);} catch(e){return true;} return false;});
+   invalidArguments.add('non-integer order', function(){try{ak.fehlbergODE(Math.exp, 0.1, 0.2, 4.5, a, b0, b1, c);} catch(e){return true;} return false;});
+   invalidArguments.add('non-array a', function(){try{ak.fehlbergODE(Math.exp, 0.1, 0.2, 5, 'a', b0, b1, c);} catch(e){return true;} return false;});
+   invalidArguments.add('non-array a row', function(){try{ak.fehlbergODE(Math.exp, 0.1, 0.2, 5, [a[0],'a1',a[2]], b0, b1, c);} catch(e){return true;} return false;});
+   invalidArguments.add('size mismatch a row', function(){try{ak.fehlbergODE(Math.exp, 0.1, 0.2, 5, [a[0],[0,0.5,0],a[2]], b0, b1, c);} catch(e){return true;} return false;});
+   invalidArguments.add('non-number a element', function(){try{ak.fehlbergODE(Math.exp, 0.1, 0.2, 5, [a[0],['a',0.5],a[2]], b0, b1, c);} catch(e){return true;} return false;});
+   invalidArguments.add('NaN a element', function(){try{ak.fehlbergODE(Math.exp, 0.1, 0.2, 5, [a[0],[0,ak.NaN],a[2]], b0, b1, c);} catch(e){return true;} return false;});
+   invalidArguments.add('non-array b0', function(){try{ak.fehlbergODE(Math.exp, 0.1, 0.2, 5, a, 'b0', b1, c);} catch(e){return true;} return false;});
+   invalidArguments.add('size mismatch b0', function(){try{ak.fehlbergODE(Math.exp, 0.1, 0.2, 5, a, c, b1, c);} catch(e){return true;} return false;});
+   invalidArguments.add('zero b0', function(){try{ak.fehlbergODE(Math.exp, 0.1, 0.2, 5, a, [0,0,0,0], b1, c);} catch(e){return true;} return false;});
+   invalidArguments.add('non-number b0 element', function(){try{ak.fehlbergODE(Math.exp, 0.1, 0.2, 5, a, [1,2,'a',1], b1, c);} catch(e){return true;} return false;});
+   invalidArguments.add('NaN b0 element', function(){try{ak.fehlbergODE(Math.exp, 0.1, 0.2, 5, a, [1,2,ak.NaN,1], b1, c);} catch(e){return true;} return false;});
+   invalidArguments.add('non-array b1', function(){try{ak.fehlbergODE(Math.exp, 0.1, 0.2, 5, a, b0, 'b1', c);} catch(e){return true;} return false;});
+   invalidArguments.add('size mismatch b1', function(){try{ak.fehlbergODE(Math.exp, 0.1, 0.2, 5, a, b0, c, c);} catch(e){return true;} return false;});
+   invalidArguments.add('zero b1', function(){try{ak.fehlbergODE(Math.exp, 0.1, 0.2, 5, a, b0, [0,0,0,0], c);} catch(e){return true;} return false;});
+   invalidArguments.add('non-number b1 element', function(){try{ak.fehlbergODE(Math.exp, 0.1, 0.2, 5, a, b0, [1,2,'a',1], c);} catch(e){return true;} return false;});
+   invalidArguments.add('NaN b1 element', function(){try{ak.fehlbergODE(Math.exp, 0.1, 0.2, 5, a, b1, [1,2,ak.NaN,1], c);} catch(e){return true;} return false;});
+   invalidArguments.add('non-array c', function(){try{ak.fehlbergODE(Math.exp, 0.1, 0.2, 5, a, b0, b1, 'c');} catch(e){return true;} return false;});
+   invalidArguments.add('size mismatch c', function(){try{ak.fehlbergODE(Math.exp, 0.1, 0.2, 5, a, b0, b1, b0);} catch(e){return true;} return false;});
+   invalidArguments.add('non-number c element', function(){try{ak.fehlbergODE(Math.exp, 0.1, 0.2, 5, a, b0, b1, [0.5,0.5,'a']);} catch(e){return true;} return false;});
+   invalidArguments.add('zero c element', function(){try{ak.fehlbergODE(Math.exp, 0.1, 0.2, 5, a, b0, b1, [0.5,0.5,0]);} catch(e){return true;} return false;});
+   invalidArguments.add('NaN c element', function(){try{ak.fehlbergODE(Math.exp, 0.1, 0.2, 5, a, b0, b1, [0.5,0.5,ak.NaN]);} catch(e){return true;} return false;});
+   invalidArguments.add('non-number steps', function(){try{ak.fehlbergODE(Math.exp, 0.1, 0.2, 5, a, b0, b1, c, 'a');} catch(e){return true;} return false;});
+   invalidArguments.add('NaN x0', function(){try{ak.fehlbergODE(Math.exp, 0.1, 0.2, 5, a, b0, b1, c)(ak.NaN, 1, 1);} catch(e){return true;} return false;});
+   invalidArguments.add('NaN x1', function(){try{ak.fehlbergODE(Math.exp, 0.1, 0.2, 5, a, b0, b1, c)(1, ak.NaN, 1);} catch(e){return true;} return false;});
+   invalidArguments.add('infinite x0', function(){try{ak.fehlbergODE(Math.exp, 0.1, 0.2, 5, a, b0, b1, c)(-ak.INFINITY, 0, 1);} catch(e){return true;} return false;});
+   invalidArguments.add('infinite x1', function(){try{ak.fehlbergODE(Math.exp, 0.1, 0.2, 5, a, b0, b1, c)(0, ak.INFINITY, 1);} catch(e){return true;} return false;});
 
    var evaluate = {
     name: 'eval',
@@ -68,7 +67,7 @@
     var e1 = Math.pow(dx, o)*10;
     var i, xi;
 
-    ode = ode(f, dx, e0, e1, o, a, b0, b1, c);
+    ode = ode(f, e0, e1, o, a, b0, b1, c);
 
     for(i=0;i<n;++i) {
      var xi = xn * i/n;
@@ -87,7 +86,7 @@
     var e1 = Math.pow(dx, o)*10;
     var i, xi;
 
-    ode = ode(f, dx, e0, e1);
+    ode = ode(f, e0, e1);
 
     for(i=0;i<n;++i) {
      var xi = xn * i/n;
@@ -108,7 +107,7 @@
     var e1 = Math.pow(dt, o)*10;
     var i, ti;
 
-    ode = ode(f, dt, e0, e1, o, a, b0, b1, c);
+    ode = ode(f, e0, e1, o, a, b0, b1, c);
 
     for(i=0;i<n;++i) {
      var ti = tn * i/n;
@@ -129,7 +128,7 @@
     var e1 = Math.pow(dt, o)*10;
     var i, ti;
 
-    ode = ode(f, dt, e0, e1);
+    ode = ode(f, e0, e1);
 
     for(i=0;i<n;++i) {
      var ti = tn * i/n;
