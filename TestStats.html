@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <script src='../AK/AK.js'></script>
+  <script src='AKTest.js'></script>
+ </head>
+ <body>
+  <script>
+  (function() {
+   var div = document.createElement('div');
+   div.innerHTML = 'loading TestStats.js<br><br>';
+   document.body.appendChild(div);
+
+   try {
+    ak.path(['.', '../AK']);
+    ak.using('TestStats.js', function(){akTest.run();});
+   }
+   catch(e) {
+    var div = document.createElement('div');
+    div.innerHTML = 'error: ' + e.message;
+    document.body.appendChild(div);
+    window.scrollTo(0, document.documentElement.offsetHeight - window.innerHeight);
+   }
+  })();
+  </script>
+ </body>
+</html>
+  
