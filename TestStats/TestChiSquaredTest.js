@@ -101,6 +101,9 @@
    contingent.add('non-matrix table', function(){try{ak.chiSquaredTestContingent('a')} catch(e){return true;} return false;});
    contingent.add('too few rows', function(){try{ak.chiSquaredTestContingent(ak.matrix(1, 3))} catch(e){return true;} return false;});
    contingent.add('too few columns', function(){try{ak.chiSquaredTestContingent(ak.matrix(3, 1))} catch(e){return true;} return false;});
+   contingent.add('negative table entry', function(){try{ak.chiSquaredTestContingent(ak.matrix([[1, 2],[-1, 3]]))} catch(e){return true;} return false;});
+   contingent.add('infinite table entry', function(){try{ak.chiSquaredTestContingent(ak.matrix([[1, 2],[ak.INFINITY, 3]]))} catch(e){return true;} return false;});
+   contingent.add('NaN table entry', function(){try{ak.chiSquaredTestContingent(ak.matrix([[1, 2],[ak.NaN, 3]]))} catch(e){return true;} return false;});
    contingent.add('inhomogenous table', function(){return ak.chiSquaredTestContingent(inhomog)<0.1;});
    contingent.add('homogenous table', function(){return ak.chiSquaredTestContingent(homog)>0.1;});
 
