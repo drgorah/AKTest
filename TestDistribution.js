@@ -5,7 +5,6 @@
  all.push('TestDistribution/TestBernoulliDistribution.js');
  all.push('TestDistribution/TestBinomialDistribution.js');
  all.push('TestDistribution/TestCauchyDistribution.js');
- all.push('TestDistribution/TestChiDistribution.js');
  all.push('TestDistribution/TestChiSquaredDistribution.js');
  all.push('TestDistribution/TestCopulaDistribution.js');
  all.push('TestDistribution/TestExponentialDistribution.js');
