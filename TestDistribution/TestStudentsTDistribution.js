@@ -2,8 +2,8 @@
 
 (function() {
  function define() {
-  var studentT = {
-   name: 'distribution.studentTDistribution',
+  var studentsT = {
+   name: 'distribution.studentsTDistribution',
    body: [],
    add: function(t) {this.body.push(t);}
   };
@@ -11,28 +11,28 @@
   try {
    function rnd() {return Math.random();}
 
-   var pdf1 = ak.studentTPDF(1);
-   var pdf2 = ak.studentTPDF(2);
-   var pdf9 = ak.studentTPDF(9);
+   var pdf1 = ak.studentsTPDF(1);
+   var pdf2 = ak.studentsTPDF(2);
+   var pdf9 = ak.studentsTPDF(9);
   
-   var cdf1 = ak.studentTCDF(1);
-   var cdf2 = ak.studentTCDF(2);
-   var cdf9 = ak.studentTCDF(9);
+   var cdf1 = ak.studentsTCDF(1);
+   var cdf2 = ak.studentsTCDF(2);
+   var cdf9 = ak.studentsTCDF(9);
   
-   var inv_cdf1 = ak.studentTInvCDF(1);
-   var inv_cdf2 = ak.studentTInvCDF(2);
-   var inv_cdf9 = ak.studentTInvCDF(9);
+   var inv_cdf1 = ak.studentsTInvCDF(1);
+   var inv_cdf2 = ak.studentsTInvCDF(2);
+   var inv_cdf9 = ak.studentsTInvCDF(9);
   
-   var cf1 = ak.studentTCF(1);
-   var cf2 = ak.studentTCF(2);
-   var cf9 = ak.studentTCF(9);
+   var cf1 = ak.studentsTCF(1);
+   var cf2 = ak.studentsTCF(2);
+   var cf9 = ak.studentsTCF(9);
   
-   var rnd01 = ak.studentTRnd(1);
-   var rnd02 = ak.studentTRnd(2);
-   var rnd09 = ak.studentTRnd(9);
-   var rnd11 = ak.studentTRnd(1, rnd);
-   var rnd12 = ak.studentTRnd(2, rnd);
-   var rnd19 = ak.studentTRnd(9, rnd);
+   var rnd01 = ak.studentsTRnd(1);
+   var rnd02 = ak.studentsTRnd(2);
+   var rnd09 = ak.studentsTRnd(9);
+   var rnd11 = ak.studentsTRnd(1, rnd);
+   var rnd12 = ak.studentsTRnd(2, rnd);
+   var rnd19 = ak.studentsTRnd(9, rnd);
   
    var init = {
     name: 'init',
@@ -41,16 +41,16 @@
    };
   
    function bad() {
-    try {ak.studentTPDF(0); return false;} catch(e) {}
-    try {ak.studentTPDF(2.5); return false;} catch(e) {}
-    try {ak.studentTCDF(0); return false;} catch(e) {}
-    try {ak.studentTCDF(2.5); return false;} catch(e) {}
-    try {ak.studentTInvCDF(0); return false;} catch(e) {}
-    try {ak.studentTInvCDF(2.5); return false;} catch(e) {}
-    try {ak.studentTCF(0); return false;} catch(e) {}
-    try {ak.studentTCF(2.5); return false;} catch(e) {}
-    try {ak.studentTRnd(0); return false;} catch(e) {}
-    try {ak.studentTRnd(2.5); return false;} catch(e) {}
+    try {ak.studentsTPDF(0); return false;} catch(e) {}
+    try {ak.studentsTPDF(2.5); return false;} catch(e) {}
+    try {ak.studentsTCDF(0); return false;} catch(e) {}
+    try {ak.studentsTCDF(2.5); return false;} catch(e) {}
+    try {ak.studentsTInvCDF(0); return false;} catch(e) {}
+    try {ak.studentsTInvCDF(2.5); return false;} catch(e) {}
+    try {ak.studentsTCF(0); return false;} catch(e) {}
+    try {ak.studentsTCF(2.5); return false;} catch(e) {}
+    try {ak.studentsTRnd(0); return false;} catch(e) {}
+    try {ak.studentsTRnd(2.5); return false;} catch(e) {}
     return true;
    }
 
@@ -143,8 +143,8 @@
   
    val.add('rnd', function(){return testRnd(rnd01, cdf1) && testRnd(rnd02, cdf2) && testRnd(rnd09, cdf9);});
 
-   studentT.add(init);
-   studentT.add(val);
+   studentsT.add(init);
+   studentsT.add(val);
   }
   catch(e) {
    var load = {
@@ -153,11 +153,11 @@
     add: function(n, b) {this.body.push({name: n, body: b});}
    };
    load.add('failed', function(){throw e;});
-   studentT.add(load);
+   studentsT.add(load);
   }
 
-  akTest.add(studentT);
+  akTest.add(studentsT);
  }
 
- ak.using('Distribution/StudentTDistribution.js', define);
+ ak.using('Distribution/StudentsTDistribution.js', define);
 })();
