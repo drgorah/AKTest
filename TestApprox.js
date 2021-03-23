@@ -7,6 +7,7 @@
  all.push('TestApprox/TestKernelSmooth.js');
  all.push('TestApprox/TestLinearInterpolate.js');
  all.push('TestApprox/TestLinearRegression.js');
+ all.push('TestApprox/TestMedianSmooth.js');
  all.push('TestApprox/TestMonoCubicSplineInterpolate.js');
  all.push('TestApprox/TestMultiLinearInterpolate.js');
  all.push('TestApprox/TestNevilleInterpolate.js');
