@@ -8,6 +8,8 @@
  all.push('TestOptimise/TestConjugateMinimum.js');
  all.push('TestOptimise/TestGeneticMinimum.js');
  all.push('TestOptimise/TestGoldenMinimum.js');
+ all.push('TestOptimise/TestNoisyAnnealMinimum.js');
+ all.push('TestOptimise/TestNoisyBlindfoldMinimum.js');
  all.push('TestOptimise/TestPolytopeMinimum.js');
  all.push('TestOptimise/TestQuasiNewtonMinimum.js');
  all.push('TestOptimise/TestWolfeLineSearch.js');
