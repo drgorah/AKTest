@@ -14,6 +14,7 @@
  all.push('TestAlgorithm/TestLexicographicalCompare.js');
  all.push('TestAlgorithm/TestLowerBound.js');
  all.push('TestAlgorithm/TestMaxElement.js');
+ all.push('TestAlgorithm/TestMedian.js');
  all.push('TestAlgorithm/TestMerge.js');
  all.push('TestAlgorithm/TestMinElement.js');
  all.push('TestAlgorithm/TestNextState.js');
