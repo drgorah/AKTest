@@ -64,10 +64,15 @@
     add: function(n, b) {this.body.push({name: n, body: b});}
    };
 
-   apply.add('apply', function(){
-    var m1 = ak.median(a1);
-    var m2 = ak.median(a2);
+   apply.add('non-empty', function(){
+    var m1 = ak.median(a1, ak.numberCompare);
+    var m2 = ak.median(a2, ak.numberCompare);
     return m1[0]===3 && m1[1]===4 && m2[0]===3 && m2[1]===3;
+   });
+
+   apply.add('empty', function(){
+    var m = ak.median(a1, ak.numberCompare, 5, 3);
+    return m.length===0;
    });
 
    median.add(init);
