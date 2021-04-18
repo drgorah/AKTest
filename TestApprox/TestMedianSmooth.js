@@ -118,7 +118,7 @@
      ak.partialSort(nodes, k, function(x0, x1){return ak.dist(x0.x, xi)-ak.dist(x1.x, xi);});
      ak.sort(nodes, function(x0, x1){return x0.y-x1.y;}, 0, k);
 
-     if(k%2===0 && 0.5*(nodes[k/2].y + nodes[k/2+1].y)!==yi) return false;
+     if(k%2===0 && 0.5*(nodes[k/2-1].y + nodes[k/2].y)!==yi) return false;
      if(k%2===1 && nodes[(k-1)/2].y!==yi) return false;
     }
     return true;
@@ -130,8 +130,8 @@
     add: function(n, b) {this.body.push({name: n, body: b});}
    };
 
-   val.add('number', function() {return compare(Math.random, Math.random, 100, 5);});
-   val.add('vector', function() {return compare(ak.multiUniformRnd(), Math.random, 100, 5);});
+   val.add('number', function() {return compare(Math.random, Math.random, 100, 4) && compare(Math.random, Math.random, 100, 5);});
+   val.add('vector', function() {return compare(ak.multiUniformRnd(), Math.random, 100, 4) && compare(ak.multiUniformRnd(), Math.random, 100, 5);});
 
    medianSmooth.add(init);
    medianSmooth.add(val);
