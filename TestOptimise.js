@@ -5,6 +5,7 @@
  all.push('TestOptimise/TestAnnealMinimum.js');
  all.push('TestOptimise/TestBisectMinimum.js');
  all.push('TestOptimise/TestBlindfoldMinimum.js');
+ all.push('TestOptimise/TestClusterMinima.js');
  all.push('TestOptimise/TestConjugateMinimum.js');
  all.push('TestOptimise/TestGeneticMinimum.js');
  all.push('TestOptimise/TestGoldenMinimum.js');
