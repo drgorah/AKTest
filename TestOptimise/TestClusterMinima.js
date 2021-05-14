@@ -39,7 +39,6 @@
    init.add('bad cut off', function(){try{var f = ak.clusterMinima(ak.kMeansClustering, 5); f(samples, 'a', 2); return false;} catch(e){return true;}});
    init.add('bad clusters', function(){try{var f = ak.clusterMinima(ak.kMeansClustering, 5); f(samples, 20, 'a'); return false;} catch(e){return true;}});
    init.add('Non-numeric value', function(){try{var s = samples.slice(0); s.push({x:u1(), y:'a'}); var f = ak.clusterMinima(ak.kMeansClustering, 5); f(s, 20, 2); return false;} catch(e){return true;}});
-   init.add('NaN value', function(){try{var s = samples.slice(0); s.push({x:u1(), y:ak.NaN}); var f = ak.clusterMinima(ak.kMeansClustering, 5); f(s, 20, 2); return false;} catch(e){return true;}});
    init.add('bad clustering', function(){try{var s = samples.slice(0); s.push({x:u1(), y:ak.NaN}); var f = ak.clusterMinima(badClustering); f(s, 20, 2); return false;} catch(e){return true;}});
 
    var apply = {
