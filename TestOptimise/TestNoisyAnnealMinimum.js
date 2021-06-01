@@ -10,32 +10,26 @@
 
   try {
    function f(x) {
-    //!! add noise
     return Math.pow(x-2, 2) - 2 + 0.01*(2*Math.random()-1);
    }
   
    function g(x) {
-    //!! add noise
     return Math.pow(x.at(0)-2, 2) + Math.pow(x.at(1)-1, 2) - 2 + 0.01*(2*Math.random()-1);
    }
   
    function ff(x) {
-    //!! add noise
     return Math.sin(x*ak.PI)*Math.exp(x) + 0.01*(2*Math.random()-1);
    }
   
    function gg(x) {
-    //!! add noise
     return Math.sin(x.at(0)*ak.PI)*Math.exp(x.at(0)) + 0.01*(2*Math.random()-1);
    }
 
    function sqrt(x) {
-    //!! add noise
     return Math.sqrt(x) + 0.01*(2*Math.random()-1);
    }
   
    function rt(x) {
-    //!! add noise
     return Math.sqrt(x.at(0)) + Math.sqrt(x.at(1)) + 0.01*(2*Math.random()-1);
    }
   
