@@ -3,6 +3,7 @@
 (function() {
  var all = [];
  all.push('TestOptimise/TestAnnealMinimum.js');
+ all.push('TestOptimise/TestBiasedSampleMinima.js');
  all.push('TestOptimise/TestBisectMinimum.js');
  all.push('TestOptimise/TestBlindfoldMinimum.js');
  all.push('TestOptimise/TestClusterMinima.js');
