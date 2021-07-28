@@ -17,11 +17,13 @@
  all.push('TestAlgorithm/TestMedian.js');
  all.push('TestAlgorithm/TestMerge.js');
  all.push('TestAlgorithm/TestMinElement.js');
+ all.push('TestAlgorithm/TestNextPermutation.js');
  all.push('TestAlgorithm/TestNextState.js');
  all.push('TestAlgorithm/TestNthElement.js');
  all.push('TestAlgorithm/TestPartialSort.js');
  all.push('TestAlgorithm/TestPartition.js');
  all.push('TestAlgorithm/TestPartitionPoint.js');
+ all.push('TestAlgorithm/TestPrevPermutation.js');
  all.push('TestAlgorithm/TestPrevState.js');
  all.push('TestAlgorithm/TestSetDifference.js');
  all.push('TestAlgorithm/TestSetIntersection.js');
