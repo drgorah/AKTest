@@ -26,6 +26,7 @@
  all.push('TestAlgorithm/TestPrevPermutation.js');
  all.push('TestAlgorithm/TestPrevState.js');
  all.push('TestAlgorithm/TestReverse.js');
+ all.push('TestAlgorithm/TestRotate.js');
  all.push('TestAlgorithm/TestSetDifference.js');
  all.push('TestAlgorithm/TestSetIntersection.js');
  all.push('TestAlgorithm/TestSetSymmetricDifference.js');
