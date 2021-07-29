@@ -54,13 +54,13 @@
 
    init.add('invalid arguments', invalidInit);
 
-   var full = {
-    name: 'full cycle',
+   var cycle = {
+    name: 'cycle',
     body: [],
     add: function(n, b) {this.body.push({name: n, body: b});}
    };
 
-   function cycle() {
+   function full() {
     var a = ['c', 'b', 'a'];
 
     if(!ak.prevPermutation(a) || a[0]!=='c' || a[1]!=='a' || a[2]!=='b') return false;
@@ -73,10 +73,25 @@
     return true;
    }
 
-   full.add('apply', cycle);
+   cycle.add('full', full);
+
+   function partial() {
+    var a = ['d', 'c', 'b', 'a', 'e', 'f'];
+
+    if(!ak.prevPermutation(a, ak.alphaCompare, 1, 4) || a[0]!=='d' || a[1]!=='c' || a[2]!=='a' || a[3]!=='b' || a[4]!=='e' || a[5]!=='f') return false;
+    if(!ak.prevPermutation(a, ak.alphaCompare, 1, 4) || a[0]!=='d' || a[1]!=='b' || a[2]!=='c' || a[3]!=='a' || a[4]!=='e' || a[5]!=='f') return false;
+    if(!ak.prevPermutation(a, ak.alphaCompare, 1, 4) || a[0]!=='d' || a[1]!=='b' || a[2]!=='a' || a[3]!=='c' || a[4]!=='e' || a[5]!=='f') return false;
+    if(!ak.prevPermutation(a, ak.alphaCompare, 1, 4) || a[0]!=='d' || a[1]!=='a' || a[2]!=='c' || a[3]!=='b' || a[4]!=='e' || a[5]!=='f') return false;
+    if(!ak.prevPermutation(a, ak.alphaCompare, 1, 4) || a[0]!=='d' || a[1]!=='a' || a[2]!=='b' || a[3]!=='c' || a[4]!=='e' || a[5]!=='f') return false;
+    if( ak.prevPermutation(a, ak.alphaCompare, 1, 4) || a[0]!=='d' || a[1]!=='c' || a[2]!=='b' || a[3]!=='a' || a[4]!=='e' || a[5]!=='f') return false;
+
+    return true;
+   }
+
+   cycle.add('partial', partial);
 
    prevPermutation.add(init);
-   prevPermutation.add(full);
+   prevPermutation.add(cycle);
   }
   catch(e) {
    var load = {
