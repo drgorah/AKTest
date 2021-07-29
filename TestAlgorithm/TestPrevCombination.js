@@ -86,12 +86,12 @@
    function partial() {
     var a = ['e', 'd', 'c', 'b', 'a', 'f', 'g'];
 
-    if(!ak.prevCombination(a, 3, ak.alphaCompare, 1, 5) || a[1]!=='d' || a[2]!=='b') return false;
-    if(!ak.prevCombination(a, 3, ak.alphaCompare, 1, 5) || a[1]!=='d' || a[2]!=='a') return false;
-    if(!ak.prevCombination(a, 3, ak.alphaCompare, 1, 5) || a[1]!=='c' || a[2]!=='b') return false;
-    if(!ak.prevCombination(a, 3, ak.alphaCompare, 1, 5) || a[1]!=='c' || a[2]!=='a') return false;
-    if(!ak.prevCombination(a, 3, ak.alphaCompare, 1, 5) || a[1]!=='b' || a[2]!=='a') return false;
-    if( ak.prevCombination(a, 3, ak.alphaCompare, 1, 5) || a[1]!=='d' || a[2]!=='c') return false;
+    if(!ak.prevCombination(a, 3, ak.alphaCompare, 1, 5) || a[0]!=='e' || a[1]!=='d' || a[2]!=='b' || a[5]!=='f' || a[6]!=='g') return false;
+    if(!ak.prevCombination(a, 3, ak.alphaCompare, 1, 5) || a[0]!=='e' || a[1]!=='d' || a[2]!=='a' || a[5]!=='f' || a[6]!=='g') return false;
+    if(!ak.prevCombination(a, 3, ak.alphaCompare, 1, 5) || a[0]!=='e' || a[1]!=='c' || a[2]!=='b' || a[5]!=='f' || a[6]!=='g') return false;
+    if(!ak.prevCombination(a, 3, ak.alphaCompare, 1, 5) || a[0]!=='e' || a[1]!=='c' || a[2]!=='a' || a[5]!=='f' || a[6]!=='g') return false;
+    if(!ak.prevCombination(a, 3, ak.alphaCompare, 1, 5) || a[0]!=='e' || a[1]!=='b' || a[2]!=='a' || a[5]!=='f' || a[6]!=='g') return false;
+    if( ak.prevCombination(a, 3, ak.alphaCompare, 1, 5) || a[0]!=='e' || a[1]!=='d' || a[2]!=='c' || a[5]!=='f' || a[6]!=='g') return false;
 
     return true;
    }
