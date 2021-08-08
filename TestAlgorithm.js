@@ -8,6 +8,7 @@
  all.push('TestAlgorithm/TestEqual.js');
  all.push('TestAlgorithm/TestEqualRange.js');
  all.push('TestAlgorithm/TestIncludes.js');
+ all.push('TestAlgorithm/TestIsCombination.js');
  all.push('TestAlgorithm/TestIsPartitioned.js');
  all.push('TestAlgorithm/TestIsSorted.js');
  all.push('TestAlgorithm/TestIsSortedUntil.js');
