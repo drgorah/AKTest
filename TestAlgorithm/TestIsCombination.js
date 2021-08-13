@@ -63,7 +63,8 @@
 
    function passes() {
     return ak.isCombination([1,2,3,4,5,6,7], 4, ak.numberCompare, 0, 7)
-        && ak.isCombination([1,2,3,5,6,7,4], 4, ak.numberCompare, 0, 7);
+        && ak.isCombination([1,2,3,5,6,7,4], 4, ak.numberCompare, 0, 7)
+        && ak.isCombination([1,2,3,4,4,4,5], 4, ak.numberCompare, 0, 7);
    }
 
    passed.add('apply', passes);

@@ -70,6 +70,7 @@
 
    function full() {
     var a = ['a', 'b', 'c', 'd'];
+    var b = ['a', 'b', 'c', 'c', 'c', 'd'];
 
     if(!ak.nextCombination(a, 2) || a[0]!=='a' || a[1]!=='c') return false;
     if(!ak.nextCombination(a, 2) || a[0]!=='a' || a[1]!=='d') return false;
@@ -77,6 +78,15 @@
     if(!ak.nextCombination(a, 2) || a[0]!=='b' || a[1]!=='d') return false;
     if(!ak.nextCombination(a, 2) || a[0]!=='c' || a[1]!=='d') return false;
     if( ak.nextCombination(a, 2) || a[0]!=='a' || a[1]!=='b') return false;
+
+    if(!ak.nextCombination(b, 3) || b[0]!=='a' || b[1]!=='b' || b[2]!=='d') return false;
+    if(!ak.nextCombination(b, 3) || b[0]!=='a' || b[1]!=='c' || b[2]!=='c') return false;
+    if(!ak.nextCombination(b, 3) || b[0]!=='a' || b[1]!=='c' || b[2]!=='d') return false;
+    if(!ak.nextCombination(b, 3) || b[0]!=='b' || b[1]!=='c' || b[2]!=='c') return false;
+    if(!ak.nextCombination(b, 3) || b[0]!=='b' || b[1]!=='c' || b[2]!=='d') return false;
+    if(!ak.nextCombination(b, 3) || b[0]!=='c' || b[1]!=='c' || b[2]!=='c') return false;
+    if(!ak.nextCombination(b, 3) || b[0]!=='c' || b[1]!=='c' || b[2]!=='d') return false;
+    if( ak.nextCombination(b, 3) || b[0]!=='a' || b[1]!=='b' || b[2]!=='c') return false;
 
     return true;
    }
