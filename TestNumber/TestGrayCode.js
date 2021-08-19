@@ -162,11 +162,11 @@
    random.add('apply',
     function() {
      var n = 10000;
-     var u = Math.pow(2, 31);
+     var u = Math.pow(2, 32);
      var i, j;
 
      for(i=0;i<n;++i) {
-      j = ak.floor(Math.random()*u);
+      j = ak.floor(Math.random()*u) ^ 0;
       if(ak.fromGray(ak.toGray(j)) !== j) return false;
       if(ak.toGray(ak.fromGray(j)) !== j) return false;
      }
