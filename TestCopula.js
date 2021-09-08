@@ -15,6 +15,8 @@
  all.push('TestCopula/TestIndependentCopula.js');
  all.push('TestCopula/TestJoeCopula.js');
  all.push('TestCopula/TestLowerCopula.js');
+ all.push('TestCopula/TestSampleCopula.js');
+ all.push('TestCopula/TestSampleMarginals.js');
  all.push('TestCopula/TestUpperCopula.js');
  ak.using(all);
 })();
