@@ -17,8 +17,8 @@
 
    var root = ak.matrix([[0.5, 0, 0], [-0.2, 0.3, 0], [0.1, -0.3, 0.2]]);
    var sigma = ak.mul(root, ak.transpose(root));
-   var rnd = ak.multiNormalRnd(mu, sigma);
    var mu = ak.vector([-0.5, 0.25, 0.5]);
+   var rnd = ak.multiNormalRnd(mu, sigma);
    var n = 100;
    var samples = new Array(n);
    var i;
