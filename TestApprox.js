@@ -11,5 +11,6 @@
  all.push('TestApprox/TestMonoCubicSplineInterpolate.js');
  all.push('TestApprox/TestMultiLinearInterpolate.js');
  all.push('TestApprox/TestNevilleInterpolate.js');
+ all.push('TestApprox/TestNodeMarginals.js');
  ak.using(all);
 })();
