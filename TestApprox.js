@@ -2,6 +2,7 @@
 
 (function() {
  var all = [];
+ all.push('TestApprox/TestAdditiveModel.js');
  all.push('TestApprox/TestBasisFunctionInterpolate.js');
  all.push('TestApprox/TestCubicSplineInterpolate.js');
  all.push('TestApprox/TestKernelSmooth.js');
