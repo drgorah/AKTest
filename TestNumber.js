@@ -3,6 +3,7 @@
 (function() {
  var all = [];
  all.push('TestNumber/TestBignum.js');
+ all.push('TestNumber/TestDimensional.js');
  all.push('TestNumber/TestExpression.js');
  all.push('TestNumber/TestFixed.js');
  all.push('TestNumber/TestGrayCode.js');
