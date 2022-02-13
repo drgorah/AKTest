@@ -33,6 +33,7 @@
 
    function bad() {
     try{ak.dimension(2, 2); return false;} catch(e){}
+    try{ak.dimension('a', 'b'); return false;} catch(e){}
     try{ak.dimension('a', ak.INFINITY); return false;} catch(e){}
 
     try{ak.dimensional('a'); return false;} catch(e){}
