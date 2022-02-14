@@ -48,7 +48,7 @@
     for(j=0;j<m;++j) {
      for(i=0;i<n;++i) marginal[i] = samples[i].at(j);
      marginal.sort(ak.numberCompare);
-     for(i=0;i<m;++i) if(marginals[j][i]!==marginal[i]) return false;
+     for(i=0;i<m;++i) if(marginals[j].at(i)!==marginal[i]) return false;
     }
     return true;
    }

@@ -82,7 +82,7 @@
      j = Math.min(ak.floor(uj*n), n-1);
      k = Math.min(ak.floor(uk*n), n-1);
 
-     if(samples[s].at(0)<=marginals[0][i] && samples[s].at(1)<=marginals[1][j] && samples[s].at(2)<=marginals[2][k]) ++count;
+     if(samples[s].at(0)<=marginals[0].at(i) && samples[s].at(1)<=marginals[1].at(j) && samples[s].at(2)<=marginals[2].at(k)) ++count;
     }
     return count;
    }
