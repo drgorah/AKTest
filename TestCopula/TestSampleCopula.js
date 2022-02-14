@@ -75,7 +75,7 @@
     var count = 0;
     var s, i, j, k;
 
-    if(ui<0 || uj<0 || uk<0) return 0;
+    if(ui<=0 || uj<=0 || uk<=0) return 0;
 
     for(s=0;s<n;++s) {
      i = Math.min(ak.floor(ui*n), n-1);
