@@ -18,16 +18,17 @@
    var root = ak.matrix([[0.5, 0, 0], [-0.2, 0.3, 0], [0.1, -0.3, 0.2]]);
    var sigma = ak.mul(root, ak.transpose(root));
    var mu = ak.vector([-0.5, 0.25, 0.5]);
-   var rnd = ak.multiNormalRnd(mu, sigma);
+   var phi = ak.multiNormalRnd(mu, sigma);
    var n = 100;
    var samples = new Array(n);
    var i;
 
-   for(i=0;i<n;++i) samples[i] = rnd();
+   for(i=0;i<n;++i) samples[i] = phi();
 
    var marginals = ak.sampleMarginals(samples);
    var copula = ak.sampleCopula(samples);
    var rnd = ak.sampleCopulaRnd(samples);
+   var map = ak.sampleCopulaMap(samples);
 
    function bad() {
     try {ak.sampleCopula(); return false;} catch(e) {}
@@ -107,7 +108,7 @@
    function testRnd() {
     var tests = 10;
     var samples = 100000;
-    var u0, u1, u2, n0, n1, n2, sample, x, i;
+    var u0, u1, u2, n0, n1, n2, sample, x;
 
     while(tests-->0) {
      u0 = Math.random();
@@ -120,6 +121,30 @@
       if(x.at(0)<=u0) ++n0;
       if(x.at(1)<=u1) ++n1;
       if(x.at(2)<=u2) ++n2;
+     }
+     if(ak.diff(n0/samples, u0)>5e-2) return false;
+     if(ak.diff(n1/samples, u1)>5e-2) return false;
+     if(ak.diff(n2/samples, u2)>5e-2) return false;
+    }
+    return true;
+   }
+
+   function testMap() {
+    var tests = 10;
+    var u0, u1, u2, n0, n1, n2, samples, sample, x;
+
+    while(tests-->0) {
+     u0 = Math.random();
+     u1 = Math.random();
+     u2 = Math.random();
+     n0 = n1 = n2 = 0;
+     samples = map.length;
+
+     for(sample=0;sample<samples;++sample) {
+      if(map[sample].dims()!==3) return false;
+      if(map[sample].at(0)<=u0) ++n0;
+      if(map[sample].at(1)<=u1) ++n1;
+      if(map[sample].at(2)<=u2) ++n2;
      }
      if(ak.diff(n0/samples, u0)>5e-2) return false;
      if(ak.diff(n1/samples, u1)>5e-2) return false;
@@ -151,6 +176,7 @@
 
    val.add('copula', testCopula);
    val.add('rnd', testRnd);
+   val.add('map', testMap);
    val.add('copula versus rnd', compareRnd);
 
    sampleCopula.add(init);
