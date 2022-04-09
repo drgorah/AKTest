@@ -16,7 +16,8 @@
    var sm2 = ak.dimension('s', -2);
 
    var amsm1 = [m, sm1];
-   var amsm2 = [m, sm2];
+   var amsm2 = [sm2, m];
+   var amsm3 = [sm1, m, sm2];
 
    var o1msm1 = {value:1, dimensions:amsm1};
    var o2msm1 = {value:function(){return 1;}, dimensions:amsm1};
@@ -27,6 +28,7 @@
    var ds2 = ak.dimensional(0.25, s2);
    var dmsm1 = ak.dimensional(1, amsm1);
    var dmsm2 = ak.dimensional(2, amsm2);
+   var dmsm3 = ak.dimensional(-1, amsm3);
    var do1 = ak.dimensional(o1msm1);
    var do2 = ak.dimensional(o2msm1);
    var do3 = ak.dimensional(o3msm1);
@@ -64,11 +66,13 @@
     add: function(n, b) {this.body.push({name: n, body: b});}
    };
 
-   members.add('value', function(){return ds.value()===0.5 && dmsm2.value()===2;});
-   members.add('dims', function(){return ds.dimensions()===1 && dmsm2.dimensions()===2;});
+   members.add('value', function(){return ds.value()===0.5 && dmsm2.value()===2 && dmsm3.value()===-1;});
+   members.add('dims', function(){return ds.dimensions()===1 && dmsm2.dimensions()===2 && dmsm3.dimensions()===2;});
    members.add('dim', function(){return ds.dimension(0).unit==='s' && ds.dimension(0).power===1
                                      && dmsm2.dimension(0).unit==='m' && dmsm2.dimension(0).power===1
-                                     && dmsm2.dimension(1).unit==='s' && dmsm2.dimension(1).power===-2;});
+                                     && dmsm2.dimension(1).unit==='s' && dmsm2.dimension(1).power===-2
+                                     && dmsm3.dimension(0).unit==='m' && dmsm3.dimension(0).power===1
+                                     && dmsm3.dimension(1).unit==='s' && dmsm3.dimension(1).power===-3;});
    members.add('toString', function(){return ds.toString()==='0.5 s' && dmsm2.toString()==='2 m s^-2';});
 
    var operators = {
